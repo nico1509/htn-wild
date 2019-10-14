@@ -1,0 +1,7 @@
+[submodule "ldbbc-lists"]
+	path = servers/ldbbc-lists
+	url = https://github.com/kaefer3000/ldbbc.git
+	branch = lists
+[submodule "wild-demo"]
+	path = wild-demo
+	url = git@git.scc.kit.edu:co1683/wild-demo.git

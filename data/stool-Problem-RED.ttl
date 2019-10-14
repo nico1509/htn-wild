@@ -1,0 +1,159 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix http: <http://www.w3.org/2011/http#> .
+@prefix http_m: <http://www.w3.org/2011/http-methods#> .
+
+@prefix sp: <http://spinrdf.org/sp#>.
+@prefix sparql-result: <http://www.w3.org/2005/sparql-results#> .
+
+@prefix ex: <http://example.org/#>.
+
+@prefix htn: <http://purl.org/uberq/htn/vocab#> .
+
+@prefix : <#> .
+
+#
+# Problem Definition
+# ----------------------
+#
+:StoolAssembly
+    a htn:PlanningProblem ;
+    htn:hasTaskNetwork :StoolGoalTN ;
+    htn:hasOutputWorkflowBehaviourRoot <wfm-behaviour#root> .
+
+:StoolGoalTN
+    a htn:TaskNetwork ;
+    htn:hasTaskList ( :g1a ) .
+
+:g1a
+    a htn:GoalTask ;
+    htn:hasLiteral :l1red .
+
+#
+# Literals
+# ----------------------
+#
+:lx
+    a sp:Ask ;
+    sparql-result:boolean "true"^^xsd:boolean .
+
+:l1red
+    a sp:Ask ;
+    sp:where ([
+        sp:subject ex:stool ;
+        sp:predicate ex:plateColor ;
+        sp:object "red"
+    ]) .
+
+:l1green
+    a sp:Ask ;
+    sp:where ([
+        sp:subject ex:stool ;
+        sp:predicate ex:plateColor ;
+        sp:object "green"
+    ]) .
+
+:l1red
+    a sp:Ask ;
+    sp:where ([
+        sp:subject ex:stool ;
+        sp:predicate ex:legsMounted ;
+        sp:object "true"
+    ]) .
+
+#
+# Methods
+# ----------------------
+#
+:Method1
+    a htn:Method ;
+    htn:forNonPrimitiveTask [
+        a htn:NonPrimitiveTask ;
+        htn:hasLiteral :l1red
+    ] ;
+    htn:hasTaskNetwork :TN1 ;
+    htn:hasPrecondition :lx .
+
+:Method2
+    a htn:Method ;
+    htn:forNonPrimitiveTask [
+        a htn:NonPrimitiveTask ;
+        htn:hasLiteral :l1green
+    ] ;
+    htn:hasTaskNetwork :TN2 ;
+    htn:hasPrecondition :lx .
+
+:Method3
+    a htn:Method ;
+    htn:forNonPrimitiveTask [
+        a htn:NonPrimitiveTask ;
+        htn:hasLiteral :l2
+    ] ;
+    htn:hasTaskNetwork :TN3 ;
+    htn:hasPrecondition :lx .
+
+:TN1
+    a htn:TaskNetwork ;
+    htn:hasOrderingConstraint "false"^^xsd:boolean ;
+    htn:hasTaskList ( :t1 :g2 :t4a ) .
+
+:TN2
+    a htn:TaskNetwork ;
+    htn:hasOrderingConstraint "true"^^xsd:boolean ;
+    htn:hasTaskList ( :t1 :g2 :t4b ) .
+
+:TN3
+    a htn:TaskNetwork ;
+    htn:hasOrderingConstraint "true"^^xsd:boolean ;
+    htn:hasTaskList ( :t2 :t3 ) .
+
+#
+# Tasks
+# ----------------------
+#
+:g2
+    a htn:GoalTask ;
+    htn:hasLiteral :l2 .
+
+:t1
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        a http:Request ;
+        http:mthd http_m:POST ;
+        http:body "deliver plate"
+    ] .
+
+:t2
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        a http:Request ;
+        http:mthd http_m:POST ;
+        http:body "deliver legs"
+    ] .
+
+:t3
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        a http:Request ;
+        http:mthd http_m:POST ;
+        http:body "attach legs"
+    ] .
+
+:t4a
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        a http:Request ;
+        http:mthd http_m:POST ;
+        http:body "attach red pad"
+    ] .
+
+:t4b
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        a http:Request ;
+        http:mthd http_m:POST ;
+        http:body "attach green pad"
+    ] .

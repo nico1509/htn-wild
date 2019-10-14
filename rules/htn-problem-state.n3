@@ -1,0 +1,388 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix http: <http://www.w3.org/2011/http#> .
+@prefix http_m: <http://www.w3.org/2011/http-methods#> .
+
+@prefix sp: <http://spinrdf.org/sp#>.
+@prefix sparql-result: <http://www.w3.org/2005/sparql-results#> .
+
+@prefix swap_list: <http://www.w3.org/2000/10/swap/list#> .
+
+@prefix this: <http://this.nxparser.github.io/reference/to/URI/of/current/rdf/graph/for/representing/permanently/relative/URIs/in/N-Triples/#> .
+
+@prefix ldbbc: <http://tok450s.lan/ldbbc/> .
+@prefix ldbbc_lists: <http://tok450s.lan/ldbbc/lists/> .
+
+@prefix htn: <http://purl.org/uberq/htn/vocab#> .
+@prefix method: <http://purl.org/uberq/htn/ns/methods#> .
+@prefix variable: <http://purl.org/uberq/htn/ns/variables#> .
+@prefix operator: <http://purl.org/uberq/htn/ns/operators#> .
+@prefix goal: <http://purl.org/uberq/htn/ns/goal#> .
+@prefix literal: <http://purl.org/uberq/htn/ns/literals#> .
+
+@prefix wild: <http://purl.org/wild/vocab#> .
+@prefix list: <http://purl.org/list/vocab#> .
+
+@prefix : <#> .
+
+# HTN-X2-1-1
+# > Determine if the first element of an atomic-only list is done
+{
+    ?pi
+        a htn:PlanningProblemInstance ;
+        htn:atDecompositionState htn:decomposing .
+
+    ?childList
+        a rdf:List ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:hasParent ?parentActivity ;
+        rdf:first ?firstActivity ;
+        htn:atVirtualDecompositionState htn:doneFromListItemOne .
+
+    ?parentActivity
+        a ?typeOfActivity ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:forTask ?task ;
+        htn:hasLiteral ?literal ;
+        wild:hasChildActivities ?childList ;
+        htn:atDecompositionState htn:done .
+
+    ?firstActivity
+        a wild:AtomicActivity ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:atDecompositionState htn:done .
+} => {
+    ?firstActivity
+        htn:atVirtualDecompositionState htn:doneFromLowestLeaf .
+} .
+
+
+# HTN-X2-1-2
+# > Determine if the middle elements are atomic and done
+{
+    ?pi
+        a htn:PlanningProblemInstance ;
+        htn:atDecompositionState htn:decomposing .
+
+    ?childList
+        a rdf:List ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:hasParent ?parentActivity ;
+        list:equalsOrTransitiveRest ?bn ;
+        htn:atVirtualDecompositionState htn:doneFromListItemOne .
+
+    ?parentActivity
+        a ?typeOfActivity ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:forTask ?task ;
+        htn:hasLiteral ?literal ;
+        wild:hasChildActivities ?childList ;
+        htn:atDecompositionState htn:done .
+
+    ?bn
+        rdf:first ?doneActivity ;
+        rdf:rest ?bn2 .
+
+    ?doneActivity
+        htn:forPlanningProblemInstance ?pi ;
+        htn:atVirtualDecompositionState htn:doneFromLowestLeaf .
+
+    ?bn2
+        rdf:first ?nextActivity .
+
+    ?nextActivity
+        a wild:AtomicActivity ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:atDecompositionState htn:done .
+} => {
+    ?nextActivity
+        htn:atVirtualDecompositionState htn:doneFromLowestLeaf .
+} .
+
+
+# HTN-X2-1-3
+# > All activities are atomic and done, so mark the list
+{
+    ?pi
+        a htn:PlanningProblemInstance ;
+        htn:atDecompositionState htn:decomposing .
+
+    ?childList
+        a rdf:List ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:hasParent ?parentActivity ;
+        list:equalsOrTransitiveRest ?bn ;
+        htn:atVirtualDecompositionState htn:doneFromListItemOne .
+
+    ?parentActivity
+        a ?typeOfActivity ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:forTask ?task ;
+        htn:hasLiteral ?literal ;
+        wild:hasChildActivities ?childList ;
+        htn:atDecompositionState htn:done .
+
+    ?bn
+        rdf:first ?doneActivity ;
+        rdf:rest rdf:nil .
+
+    ?doneActivity
+        a wild:AtomicActivity ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:atVirtualDecompositionState htn:doneFromLowestLeaf .
+} => {
+    ?childList
+        htn:atVirtualDecompositionState htn:doneFromLowestLeaf .
+} .
+
+
+# HTN-X2-2A-1
+# > Determine if the first item of a list containing an activity with a previously marked list is atomic and done
+{
+    ?pi
+        a htn:PlanningProblemInstance ;
+        htn:atDecompositionState htn:decomposing .
+
+    ?markedList
+        a rdf:List ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:hasParent ?markedListActivity ;
+        htn:atVirtualDecompositionState htn:doneFromLowestLeaf .
+
+    ?markedListActivity
+        htn:forPlanningProblemInstance ?pi ;
+        wild:hasChildActivities ?markedList ;
+        htn:atDecompositionState htn:done .
+
+    ?containingList
+        a rdf:List ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:hasParent ?activity ;
+        rdf:first ?firstActivity ;
+        list:equalsOrTransitiveRest ?bn .
+
+    ?bn
+        rdf:first ?markedListActivity .
+
+    ?firstActivity
+        a wild:AtomicActivity ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:atDecompositionState htn:done .
+} => {
+    ?firstActivity
+        htn:atVirtualDecompositionState htn:doneFromLowestLeaf .
+} .
+
+
+# HTN-X2-2B-1
+# > Determine if the first item of a list containing a previously marked activity has a marked child list
+{
+    ?pi
+        a htn:PlanningProblemInstance ;
+        htn:atDecompositionState htn:decomposing .
+
+    ?markedList
+        a rdf:List ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:hasParent ?markedListActivity ;
+        htn:atVirtualDecompositionState htn:doneFromLowestLeaf .
+
+    ?markedListActivity
+        htn:forPlanningProblemInstance ?pi ;
+        wild:hasChildActivities ?markedList ;
+        htn:atDecompositionState htn:done .
+
+    ?containingList
+        a rdf:List ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:hasParent ?activity ;
+        rdf:first ?firstActivity .
+        list:equalsOrTransitiveRest ?bn .
+
+    ?bn
+        rdf:first ?markedListActivity .
+
+    ?firstActivity
+        htn:forPlanningProblemInstance ?pi ;
+        wild:hasChildActivities ?childList ;
+        htn:atDecompositionState htn:done .
+
+    ?childList
+        htn:atVirtualDecompositionState htn:doneFromLowestLeaf .
+} => {
+    ?firstActivity
+        htn:atVirtualDecompositionState htn:doneFromLowestLeaf .
+} .
+
+
+# HTN-X2-2A-2
+# > Determine if the middle items of that list are atomic and done
+{
+    ?pi
+        a htn:PlanningProblemInstance ;
+        htn:atDecompositionState htn:decomposing .
+
+    ?markedList
+        a rdf:List ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:hasParent ?markedListActivity ;
+        htn:atVirtualDecompositionState htn:doneFromLowestLeaf .
+
+    ?markedListActivity
+        htn:forPlanningProblemInstance ?pi ;
+        wild:hasChildActivities ?markedList ;
+        htn:atDecompositionState htn:done .
+
+    ?containingList
+        a rdf:List ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:hasParent ?activity ;
+        list:equalsOrTransitiveRest ?bn , ?bn2 .
+
+    ?bn
+        rdf:first ?markedListActivity .
+
+    ?bn2
+        rdf:first ?doneActivity ;
+        rdf:rest ?nextActivity .
+
+    ?doneActivity
+        htn:forPlanningProblemInstance ?pi ;
+        htn:atVirtualDecompositionState htn:doneFromLowestLeaf .
+
+    ?nextActivity
+        a wild:AtomicActivity ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:atDecompositionState htn:done .
+} => {
+    ?nextActivity
+        htn:atVirtualDecompositionState htn:doneFromLowestLeaf .
+} .
+
+
+# HTN-X2-2B-2
+# > Determine if the middle items of that list are marked
+{
+    ?pi
+        a htn:PlanningProblemInstance ;
+        htn:atDecompositionState htn:decomposing .
+
+    ?markedList
+        a rdf:List ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:hasParent ?markedListActivity ;
+        htn:atVirtualDecompositionState htn:doneFromLowestLeaf .
+
+    ?markedListActivity
+        htn:forPlanningProblemInstance ?pi ;
+        wild:hasChildActivities ?markedList ;
+        htn:atDecompositionState htn:done .
+
+    ?containingList
+        a rdf:List ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:hasParent ?activity ;
+        list:equalsOrTransitiveRest ?bn , ?bn2 .
+
+    ?bn
+        rdf:first ?markedListActivity .
+
+    ?bn2
+        rdf:first ?doneActivity ;
+        rdf:rest ?bn3 .
+
+    ?bn3
+        rdf:first ?nextActivity .
+
+    ?doneActivity
+        htn:forPlanningProblemInstance ?pi ;
+        htn:atVirtualDecompositionState htn:doneFromLowestLeaf .
+
+    ?nextActivity
+        htn:forPlanningProblemInstance ?pi ;
+        wild:hasChildActivities ?childList ;
+        htn:atDecompositionState htn:done .
+
+    ?childList
+        htn:atVirtualDecompositionState htn:doneFromLowestLeaf .
+} => {
+    ?nextActivity
+        htn:atVirtualDecompositionState htn:doneFromLowestLeaf .
+} .
+
+
+# HTN-X2-2A/B-3
+# > All items are marked, so mark the list
+{
+    ?pi
+        a htn:PlanningProblemInstance ;
+        htn:atDecompositionState htn:decomposing .
+
+    ?markedList
+        a rdf:List ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:hasParent ?markedListActivity ;
+        htn:atVirtualDecompositionState htn:doneFromLowestLeaf .
+
+    ?markedListActivity
+        htn:forPlanningProblemInstance ?pi ;
+        wild:hasChildActivities ?markedList ;
+        htn:atDecompositionState htn:done .
+
+    ?containingList
+        a rdf:List ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:hasParent ?activity ;
+        list:equalsOrTransitiveRest ?bn , ?bn2 .
+
+    ?bn
+        rdf:first ?markedListActivity .
+
+    ?bn2
+        rdf:first ?doneActivity ;
+        rdf:rest rdf:nil .
+
+    ?doneActivity
+        htn:forPlanningProblemInstance ?pi ;
+        htn:atVirtualDecompositionState htn:doneFromLowestLeaf .
+} => {
+    ?containingList
+        htn:atVirtualDecompositionState htn:doneFromLowestLeaf .
+} .
+
+
+# HTN-X2-3
+# > If root is marked, the problem instance is done
+{
+    ?pi
+        a htn:PlanningProblemInstance ;
+        htn:planningProblemInstanceOf ?pp ;
+        htn:atDecompositionState htn:decomposing .
+
+    ?wfm
+        a wild:WorkflowModel ;
+        htn:forPlanningProblemInstance ?pi ;
+        wild:hasBehaviour ?root .
+
+    ?root
+        htn:forPlanningProblemInstance ?pi ;
+        htn:atDecompositionState htn:done ;
+        wild:hasChildActivities ?childList .
+
+    ?childList
+        htn:atVirtualDecompositionState htn:doneFromLowestLeaf .
+} => {
+    _:h
+        http:mthd http_m:PUT ;
+        http:requestURI ?pi ;
+        http:body {
+            ?pi
+                a htn:PlanningProblemInstance ;
+                htn:planningProblemInstanceOf ?pp ;
+                htn:atDecompositionState htn:done .
+        } .
+
+} .

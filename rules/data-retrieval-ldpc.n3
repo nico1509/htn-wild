@@ -1,0 +1,9 @@
+@prefix http: <http://www.w3.org/2011/http#>.
+@prefix http_m: <http://www.w3.org/2011/http-methods#>.
+@prefix ldp: <http://www.w3.org/ns/ldp#> .
+
+# GET data from ldbbc
+
+{ _:h http:mthd http_m:GET ; http:requestURI <http://tok450s.lan/ldbbc/> . } 
+
+{ <http://tok450s.lan/ldbbc/> ldp:contains ?y . } => { [] http:mthd http_m:GET; http:requestURI ?y . } .

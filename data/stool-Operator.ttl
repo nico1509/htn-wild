@@ -1,0 +1,79 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix http: <http://www.w3.org/2011/http#> .
+@prefix http_m: <http://www.w3.org/2011/http-methods#> .
+
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix sparql-result: <http://www.w3.org/2005/sparql-results#> .
+
+@prefix htn: <http://purl.org/uberq/htn/vocab#> .
+
+@prefix : <#> .
+
+:RoboticArm
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask :t1 , :t2 , :t2X, :t3 , :t3X, :t4a , :t4b ;
+    htn:hasPostcondition :pc .
+
+:t1
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:3000/> ;
+        http:body "deliver plate" 
+    ] .
+
+:t2
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:3000/> ;
+        http:body "deliver legs" 
+    ] .
+
+:t3
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:3000/> ;
+        http:body "attach legs" 
+    ] .
+
+:t2X
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:3000/> ;
+        http:body "deliver legs X" 
+    ] .
+
+:t3X
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:3000/> ;
+        http:body "attach legs X" 
+    ] .
+
+:t4a
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:3000/> ;
+        http:body "attach red pad" 
+    ] .
+
+:t4b
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:3000/> ;
+        http:body "attach green pad" 
+    ] .
+
+:pc
+    a sp:Ask ;
+    sparql-result:boolean "true"^^xsd:boolean .

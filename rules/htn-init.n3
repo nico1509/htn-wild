@@ -1,0 +1,226 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix http: <http://www.w3.org/2011/http#> .
+@prefix http_m: <http://www.w3.org/2011/http-methods#> .
+
+@prefix swap_list: <http://www.w3.org/2000/10/swap/list#> .
+
+@prefix this: <http://this.nxparser.github.io/reference/to/URI/of/current/rdf/graph/for/representing/permanently/relative/URIs/in/N-Triples/#> .
+
+@prefix ldbbc: <http://tok450s.lan/ldbbc/> .
+@prefix ldbbc_lists: <http://tok450s.lan/ldbbc/lists/> .
+
+@prefix htn: <http://purl.org/uberq/htn/vocab#> .
+
+@prefix wild: <http://purl.org/wild/vocab#> .
+@prefix list: <http://purl.org/list/vocab#> .
+
+
+# HTN-0
+# > Create Workflow Model
+{
+    ?pp 
+        a htn:PlanningProblem ;
+        htn:hasTaskNetwork ?gtn .
+
+    ?pi
+        a htn:PlanningProblemInstance ;
+        htn:planningProblemInstanceOf ?pp ;
+        htn:atDecompositionState htn:created .
+} => {
+    _:h
+        http:mthd http_m:POST ;
+        http:requestURI <http://tok450s.lan/ldbbc/> ;
+        http:body {
+            this:wfm
+                a wild:WorkflowModel ;
+                wild:hasBehaviour _:root ;
+                htn:forPlanningProblemInstance ?pi .
+        } .
+} .
+# HTN-0
+# > Initialize Planning Problem Instance
+{
+    ?pp 
+        a htn:PlanningProblem ;
+        htn:hasTaskNetwork ?gtn .
+
+    ?pi
+        a htn:PlanningProblemInstance ;
+        htn:planningProblemInstanceOf ?pp ;
+        htn:atDecompositionState htn:created .
+} => {
+    _:h
+        http:mthd http_m:PUT ;
+        http:requestURI ?pi ;
+        http:body {
+            ?pi
+                a htn:PlanningProblemInstance ;
+                htn:planningProblemInstanceOf ?pp ;
+                htn:atDecompositionState htn:initialized .
+        } .
+} .
+
+
+# HTN-1
+# > Create root activity with ChildList placeholder
+{
+    ?pp
+        a htn:PlanningProblem ;
+        htn:hasTaskNetwork ?gtn .
+
+    ?pi
+        a htn:PlanningProblemInstance ;
+        htn:planningProblemInstanceOf ?pp ;
+        htn:atDecompositionState htn:initialized .
+
+    ?gtn
+        htn:hasTaskListMember ?goal .
+
+    ?goal
+        a htn:GoalTask ;
+        htn:hasLiteral ?literal .
+
+    ?wfm
+        a wild:WorkflowModel ;
+        htn:forPlanningProblemInstance ?pi .
+} => {
+    _:h
+        http:mthd http_m:POST ;
+        http:requestURI <http://tok450s.lan/ldbbc/> ;
+        http:body {
+            this:root
+                a wild:CompositeActivity ;
+                htn:forPlanningProblemInstance ?pi ;
+                htn:forTask ?goal ;
+                htn:hasLiteral ?literal ;
+                wild:hasChildActivities this:ChildActivities ;
+                htn:atDecompositionState htn:initialized .
+        } .
+} .
+# HTN-1
+# > Set planning problem instance to root-created
+{
+    ?pp
+        a htn:PlanningProblem ;
+        htn:hasTaskNetwork ?gtn .
+
+    ?pi
+        a htn:PlanningProblemInstance ;
+        htn:planningProblemInstanceOf ?pp ;
+        htn:atDecompositionState htn:initialized .
+
+    ?gtn
+        htn:hasTaskListMember ?goal .
+
+    ?goal
+        a htn:GoalTask ;
+        htn:hasLiteral ?literal .
+
+    ?wfm
+        a wild:WorkflowModel ;
+        htn:forPlanningProblemInstance ?pi .
+} => {
+    _:h
+        http:mthd http_m:PUT ;
+        http:requestURI ?pi ;
+        http:body {
+            ?pi
+                a htn:PlanningProblemInstance ;
+                htn:planningProblemInstanceOf ?pp ;
+                htn:atDecompositionState htn:root_created .
+        } .
+} .
+
+
+# HTN-2
+# > Assign root activity to workflow model
+{
+    ?pp
+        a htn:PlanningProblem ;
+        htn:hasTaskNetwork ?gtn .
+
+    ?pi
+        a htn:PlanningProblemInstance ;
+        htn:planningProblemInstanceOf ?pp ;
+        htn:atDecompositionState htn:root_created .
+
+    ?wfm
+        a wild:WorkflowModel ;
+        htn:forPlanningProblemInstance ?pi .
+
+    ?root 
+        a wild:CompositeActivity ;
+        htn:forPlanningProblemInstance ?pi .
+} => {
+    _:h
+        http:mthd http_m:PUT ;
+        http:requestURI ?wfm ;
+        http:body {
+            ?wfm
+                a wild:WorkflowModel ;
+                wild:hasBehaviour ?root ;
+                htn:forPlanningProblemInstance ?pi .
+        } .
+} .
+# HTN-2
+# > Set planning problem instance to decomposing
+{
+    ?pp
+        a htn:PlanningProblem ;
+        htn:hasTaskNetwork ?gtn .
+
+    ?pi
+        a htn:PlanningProblemInstance ;
+        htn:atDecompositionState htn:root_created .
+
+    ?wfm
+        a wild:WorkflowModel ;
+        htn:forPlanningProblemInstance ?pi .
+
+    ?root 
+        a wild:CompositeActivity ;
+        htn:forPlanningProblemInstance ?pi .
+} => {
+    _:h
+        http:mthd http_m:PUT ;
+        http:requestURI ?pi ;
+        http:body {
+            ?pi
+                a htn:PlanningProblemInstance ;
+                htn:planningProblemInstanceOf ?pp ;
+                htn:atDecompositionState htn:decomposing .
+        } .
+} .
+# HTN-2
+# > Create Workflow instance
+{
+    ?pp
+        a htn:PlanningProblem ;
+        htn:hasTaskNetwork ?gtn .
+
+    ?pi
+        a htn:PlanningProblemInstance ;
+        htn:atDecompositionState htn:root_created .
+
+    ?wfm
+        a wild:WorkflowModel ;
+        htn:forPlanningProblemInstance ?pi .
+
+    ?root 
+        a wild:CompositeActivity ;
+        htn:forPlanningProblemInstance ?pi .
+} => {
+    _:h
+        http:mthd http_m:POST ;
+        http:requestURI <http://tok450s.lan/ldbbc/> ;
+        http:body {
+            this:it
+                a wild:WorkflowInstance ;
+                wild:workflowInstanceOf ?wfm ;
+                wild:hasState wild:uninitialised .
+        } .
+} .

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stool Manufacturing</title>
+    <style>
+        .status {
+            padding: 5px;
+            background-color: red;
+        }
+        .status-green {
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn-reset">RESET</button>
+
+    <p>Plate Delivered: <span class="status" id="plate-delivered">FALSE</span> </p>
+    <p>Legs Delivered: <span class="status" id="legs-delivered">FALSE</span> </p>
+    <p>Legs Attached: <span class="status" id="legs-attached">FALSE</span> </p>
+    <p>Legs Delivered X: <span class="status" id="legs-delivered-x">FALSE</span> </p>
+    <p>Legs Attached X: <span class="status" id="legs-attached-x">FALSE</span> </p>
+    <p>Red Pad Attached: <span class="status" id="red-pad-attached">FALSE</span> </p>
+    <p>Green Pad Attached: <span class="status" id="green-pad-attached">FALSE</span> </p>
+
+
+    <script src="./zepto.min.js"></script>
+    <script>
+        setInterval(() => {
+            loadState();
+        }, 300);
+
+        function loadState() {
+            $.getJSON('http://localhost:3000/', data => {
+                if (data.plateDelivered) {
+                    $('#plate-delivered').addClass('status-green');
+                    $('#plate-delivered').text('TRUE');
+                } else {
+                    $('#plate-delivered').removeClass('status-green');
+                    $('#plate-delivered').text('FALSE');
+                }
+
+                if (data.legsDelivered) {
+                    $('#legs-delivered').addClass('status-green');
+                    $('#legs-delivered').text('TRUE');
+                } else {
+                    $('#legs-delivered').removeClass('status-green');
+                    $('#legs-delivered').text('FALSE');
+                }
+
+                if (data.legsAttached) {
+                    $('#legs-attached').addClass('status-green');
+                    $('#legs-attached').text('TRUE');
+                } else {
+                    $('#legs-attached').removeClass('status-green');
+                    $('#legs-attached').text('FALSE');
+                }
+
+                if (data.legsDeliveredX) {
+                    $('#legs-delivered-x').addClass('status-green');
+                    $('#legs-delivered-x').text('TRUE');
+                } else {
+                    $('#legs-delivered-x').removeClass('status-green');
+                    $('#legs-delivered-x').text('FALSE');
+                }
+
+                if (data.legsAttachedX) {
+                    $('#legs-attached-x').addClass('status-green');
+                    $('#legs-attached-x').text('TRUE');
+                } else {
+                    $('#legs-attached-x').removeClass('status-green');
+                    $('#legs-attached-x').text('FALSE');
+                }
+
+                if (data.redPadAttached) {
+                    $('#red-pad-attached').addClass('status-green');
+                    $('#red-pad-attached').text('TRUE');
+                } else {
+                    $('#red-pad-attached').removeClass('status-green');
+                    $('#red-pad-attached').text('FALSE');
+                }
+
+                if (data.greenPadAttached) {
+                    $('#green-pad-attached').addClass('status-green');
+                    $('#green-pad-attached').text('TRUE');
+                } else {
+                    $('#green-pad-attached').removeClass('status-green');
+                    $('#green-pad-attached').text('FALSE');
+                }
+
+            });
+        }
+
+        $('#btn-reset').click(() => {
+            $.post('http://localhost:3000/', 'reset');
+        });
+    </script>
+
+</body>
+
+</html>

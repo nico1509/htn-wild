@@ -1,0 +1,370 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix http: <http://www.w3.org/2011/http#> .
+@prefix http_m: <http://www.w3.org/2011/http-methods#> .
+
+@prefix sp: <http://spinrdf.org/sp#>.
+@prefix sparql-result: <http://www.w3.org/2005/sparql-results#> .
+
+@prefix swap_list: <http://www.w3.org/2000/10/swap/list#> .
+
+@prefix this: <http://this.nxparser.github.io/reference/to/URI/of/current/rdf/graph/for/representing/permanently/relative/URIs/in/N-Triples/#> .
+
+@prefix ldbbc: <http://tok450s.lan/ldbbc/> .
+@prefix ldbbc_lists: <http://tok450s.lan/ldbbc/lists/> .
+
+@prefix htn: <http://purl.org/uberq/htn/vocab#> .
+
+@prefix wild: <http://purl.org/wild/vocab#> .
+@prefix list: <http://purl.org/list/vocab#> .
+
+
+# HTN-6A
+# > Make parent a Sequential and set its state to done
+{
+    ?pi
+        a htn:PlanningProblemInstance ;
+        htn:atDecompositionState htn:decomposing .
+
+    ?compActivity
+        a wild:CompositeActivity ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:forTask ?seqAct ;
+        htn:hasLiteral ?literal ;
+        wild:hasChildActivities ?listPlaceholder ;
+        htn:atDecompositionState htn:decomposing .
+
+    ?methodStateInformation
+        htn:aboutMethod ?method ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:atMethodState htn:selected .
+
+    ?method
+        a htn:Method ;
+        htn:forNonPrimitiveTask ?methodTask ;
+        htn:hasTaskNetwork ?methodTaskNetwork ;
+        htn:hasPrecondition ?methodPc .
+
+    ?methodPc
+        a sp:Ask ;
+        sparql-result:boolean "true"^^xsd:boolean .
+
+    ?methodTask
+        htn:hasLiteral ?literal .
+    
+    ?methodTaskNetwork
+        htn:hasOrderingConstraint "true"^^xsd:boolean ;
+        htn:hasTaskList ?taskList ;
+        htn:hasTaskListMember ?doneTask .
+
+    ?activity
+        a ?typeOfActivity ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:forTask ?doneTask ;
+        htn:hasLiteral ?doneTaskLiteral ;
+        wild:hasChildActivities ?doneTaskChildList ;
+        htn:atDecompositionState htn:initialized .
+
+    ?taskList 
+        list:equalsOrTransitiveRest ?bn .
+
+    ?bn
+        rdf:first ?doneTask ;
+        rdf:rest rdf:nil .
+
+    ?childList
+        a rdf:List ;
+        htn:hasParent ?compActivity .
+} => {
+    _:h
+        http:mthd http_m:PUT ;
+        http:requestURI ?compActivity ;
+        http:body {
+            ?compActivity
+                a wild:SequentialActivity ;
+                htn:forPlanningProblemInstance ?pi ;
+                htn:forTask ?seqAct ;
+                htn:hasLiteral ?literal ;
+                wild:hasChildActivities ?childList ;
+                htn:atDecompositionState htn:done .
+        } .
+} .
+
+
+# HTN-6B
+# > Make parent a Parallel and set its state to done
+{
+    ?pi
+        a htn:PlanningProblemInstance ;
+        htn:atDecompositionState htn:decomposing .
+
+    ?compActivity
+        a wild:CompositeActivity ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:forTask ?seqAct ;
+        htn:hasLiteral ?literal ;
+        wild:hasChildActivities ?listPlaceholder ;
+        htn:atDecompositionState htn:decomposing .
+
+    ?methodStateInformation
+        htn:aboutMethod ?method ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:atMethodState htn:selected .
+
+    ?method
+        a htn:Method ;
+        htn:forNonPrimitiveTask ?methodTask ;
+        htn:hasTaskNetwork ?methodTaskNetwork ;
+        htn:hasPrecondition ?methodPc .
+
+    ?methodPc
+        a sp:Ask ;
+        sparql-result:boolean "true"^^xsd:boolean .
+
+    ?methodTask
+        htn:hasLiteral ?literal .
+    
+    ?methodTaskNetwork
+        htn:hasOrderingConstraint "false"^^xsd:boolean ;
+        htn:hasTaskList ?taskList ;
+        htn:hasTaskListMember ?doneTask .
+
+    ?activity
+        a ?typeOfActivity ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:forTask ?doneTask ;
+        htn:hasLiteral ?doneTaskLiteral ;
+        wild:hasChildActivities ?doneTaskChildList ;
+        htn:atDecompositionState htn:initialized .
+
+    ?taskList 
+        list:equalsOrTransitiveRest ?bn .
+
+    ?bn
+        rdf:first ?doneTask ;
+        rdf:rest rdf:nil .
+
+    ?childList
+        a rdf:List ;
+        htn:hasParent ?compActivity .
+} => {
+    _:h
+        http:mthd http_m:PUT ;
+        http:requestURI ?compActivity ;
+        http:body {
+            ?compActivity
+                a wild:ParallelActivity ;
+                htn:forPlanningProblemInstance ?pi ;
+                htn:forTask ?seqAct ;
+                htn:hasLiteral ?literal ;
+                wild:hasChildActivities ?childList ;
+                htn:atDecompositionState htn:done .
+        } .
+} .
+
+
+# HTN-6A/B
+# > Set SelectedMethod to done
+{
+    ?pi
+        a htn:PlanningProblemInstance ;
+        htn:atDecompositionState htn:decomposing .
+
+    ?compActivity
+        a wild:CompositeActivity ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:forTask ?seqAct ;
+        htn:hasLiteral ?literal ;
+        wild:hasChildActivities ?listPlaceholder ;
+        htn:atDecompositionState htn:decomposing .
+
+    ?methodStateInformation
+        htn:aboutMethod ?method ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:atMethodState htn:selected .
+
+    ?method
+        a htn:Method ;
+        htn:forNonPrimitiveTask ?methodTask ;
+        htn:hasTaskNetwork ?methodTaskNetwork ;
+        htn:hasPrecondition ?methodPc .
+
+    ?methodPc
+        a sp:Ask ;
+        sparql-result:boolean "true"^^xsd:boolean .
+
+    ?methodTask
+        htn:hasLiteral ?literal .
+    
+    ?methodTaskNetwork
+        htn:hasTaskList ?taskList ;
+        htn:hasTaskListMember ?doneTask .
+
+    ?activity
+        a ?typeOfActivity ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:forTask ?doneTask ;
+        htn:hasLiteral ?doneTaskLiteral ;
+        wild:hasChildActivities ?doneTaskChildList ;
+        htn:atDecompositionState htn:initialized .
+
+    ?taskList 
+        list:equalsOrTransitiveRest ?bn .
+
+    ?bn
+        rdf:first ?doneTask ;
+        rdf:rest rdf:nil .
+
+    ?childList
+        a rdf:List ;
+        htn:createdFromMethod ?method ;
+        htn:hasParent ?compActivity .
+} => {
+    _:h
+        http:mthd http_m:PUT ;
+        http:requestURI ?methodStateInformation ;
+        http:body {
+            ?methodStateInformation
+                htn:aboutMethod ?method ;
+                htn:forPlanningProblemInstance ?pi ;
+                htn:atMethodState htn:done .
+        } .
+} .
+# HTN-6A/B
+# > Set last element to created
+{
+    ?pi
+        a htn:PlanningProblemInstance ;
+        htn:atDecompositionState htn:decomposing .
+
+    ?compActivity
+        a wild:CompositeActivity ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:forTask ?seqAct ;
+        htn:hasLiteral ?literal ;
+        wild:hasChildActivities ?listPlaceholder ;
+        htn:atDecompositionState htn:decomposing .
+
+    ?methodStateInformation
+        htn:aboutMethod ?method ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:atMethodState htn:selected .
+
+    ?method
+        a htn:Method ;
+        htn:forNonPrimitiveTask ?methodTask ;
+        htn:hasTaskNetwork ?methodTaskNetwork ;
+        htn:hasPrecondition ?methodPc .
+
+    ?methodPc
+        a sp:Ask ;
+        sparql-result:boolean "true"^^xsd:boolean .
+
+    ?methodTask
+        htn:hasLiteral ?literal .
+    
+    ?methodTaskNetwork
+        htn:hasTaskList ?taskList ;
+        htn:hasTaskListMember ?doneTask .
+
+    ?activity
+        a ?typeOfActivity ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:forTask ?doneTask ;
+        htn:hasLiteral ?doneTaskLiteral ;
+        wild:hasChildActivities ?doneTaskChildList ;
+        htn:atDecompositionState htn:initialized .
+
+    ?taskList 
+        list:equalsOrTransitiveRest ?bn .
+
+    ?bn
+        rdf:first ?doneTask ;
+        rdf:rest rdf:nil .
+
+    ?childList
+        a rdf:List ;
+        htn:createdFromMethod ?method ;
+        htn:hasParent ?compActivity .
+} => {
+    _:h
+        http:mthd http_m:PUT ;
+        http:requestURI ?activity ;
+        http:body {
+            ?activity
+                a ?typeOfActivity ;
+                htn:forPlanningProblemInstance ?pi ;
+                htn:forTask ?doneTask ;
+                htn:hasLiteral ?doneTaskLiteral ;
+                wild:hasChildActivities ?doneTaskChildList ;
+                htn:atDecompositionState htn:created .
+        } .
+} .
+# HTN-6A/B
+# > Append last activity to parent's child list
+{
+    ?pi
+        a htn:PlanningProblemInstance ;
+        htn:atDecompositionState htn:decomposing .
+
+    ?compActivity
+        a wild:CompositeActivity ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:forTask ?seqAct ;
+        htn:hasLiteral ?literal ;
+        wild:hasChildActivities ?listPlaceholder ;
+        htn:atDecompositionState htn:decomposing .
+
+    ?methodStateInformation
+        htn:aboutMethod ?method ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:atMethodState htn:selected .
+
+    ?method
+        a htn:Method ;
+        htn:forNonPrimitiveTask ?methodTask ;
+        htn:hasTaskNetwork ?methodTaskNetwork ;
+        htn:hasPrecondition ?methodPc .
+
+    ?methodPc
+        a sp:Ask ;
+        sparql-result:boolean "true"^^xsd:boolean .
+
+    ?methodTask
+        htn:hasLiteral ?literal .
+    
+    ?methodTaskNetwork
+        htn:hasTaskList ?taskList ;
+        htn:hasTaskListMember ?doneTask .
+
+    ?activity
+        a ?typeOfActivity ;
+        htn:forPlanningProblemInstance ?pi ;
+        htn:forTask ?doneTask ;
+        htn:hasLiteral ?doneTaskLiteral ;
+        wild:hasChildActivities ?doneTaskChildList ;
+        htn:atDecompositionState htn:initialized .
+
+    ?taskList 
+        list:equalsOrTransitiveRest ?bn .
+
+    ?bn
+        rdf:first ?doneTask ;
+        rdf:rest rdf:nil .
+
+    ?childList
+        a rdf:List ;
+        htn:createdFromMethod ?method ;
+        htn:hasParent ?compActivity .
+} => {
+    _:h
+        http:mthd http_m:POST ;
+        http:requestURI ?childList ;
+        http:body {
+            ?childList
+                swap_list:append ?activity .
+        } .
+} .

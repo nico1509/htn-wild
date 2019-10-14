@@ -1,0 +1,218 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix http: <http://www.w3.org/2011/http#> .
+@prefix http_m: <http://www.w3.org/2011/http-methods#> .
+
+@prefix wild: <http://purl.org/wild/vocab#> .
+
+@prefix list: <http://purl.org/list/vocab#> .
+
+@prefix sp: <http://spinrdf.org/sp#>.
+
+@prefix : <http://purl.org/uberq/htn/vocab#> .
+
+
+:HTN
+    a owl:Ontology .
+
+#
+# Classes
+# ----------------------
+#
+:Task
+    a rdfs:Class .
+
+:NonPrimitiveTask
+    rdfs:subClassOf :Task .
+
+:PrimitiveTask
+    rdfs:subClassOf :Task ;
+    rdfs:comment "A primitive Task becomes an atomic activity in WiLD" ;
+    owl:disjointWith :NonPrimitiveTask .
+
+:GoalTask
+    rdfs:comment "A goal task becomes a composite (sequential or parallel) activity in WiLD" ;
+    rdfs:subClassOf :NonPrimitiveTask .
+
+:CompoundTask
+    rdfs:comment "Currently not in use" ;
+    rdfs:subClassOf :NonPrimitiveTask .
+
+:TaskNetwork
+    rdfs:comment "Contains a List of tasks and the information whether order is important" ;
+    a rdfs:Class .
+
+:PlanningOperator
+    rdfs:comment "Provides primitive tasks with HTTP request that match the decomposed primitive tasks" ;
+    a rdfs:Class .
+
+:Method
+    rdfs:comment "Connects a non-primitive task to a task network" ;
+    a rdfs:Class .
+
+:PlanningProblem
+    rdfs:comment "The planning problem, contains the goal" ;
+    a rdfs:Class .
+
+:State
+    a rdfs:Class .
+
+:DecompositionState
+    rdfs:comment "Different states of decomposition to determine progress mainly when working with lists" ;
+    rdfs:subClassOf :State .
+
+:MethodState
+    rdfs:comment "Different states of method to determine whether it is selected or already used for decomposition" ;
+    rdfs:subClassOf :State .
+
+:VirtualDecompositionState
+    rdfs:comment "Used as an internal marker to determine progress" ;
+    rdfs:subClassOf :State .
+
+:MethodStateInformation
+    a rdfs:Class .
+
+#
+# Properties
+# ----------------------
+#
+
+:hasHttpRequest 
+    a rdf:Property ;
+    rdfs:domain :PrimitiveTask ;
+    rdfs:range http:Request .
+
+:hasLiteral
+    a rdf:Property ;
+    rdfs:comment "A literal is a sp:Ask for simplicity" ;
+    rdfs:domain :GoalTask ;
+    rdfs:range sp:Ask .
+
+:hasPrecondition
+    a rdf:Property ;
+    rdfs:domain :Method ;
+    rdfs:range sp:Ask .
+
+:hasPostcondition
+    a rdf:Property ;
+    rdfs:domain :PlanningOperator ;
+    rdfs:range sp:Ask .
+
+:hasTaskList
+    a rdf:Property ;
+    rdfs:domain :TaskNetwork ;
+    rdfs:range rdf:List .
+
+:hasOrderingConstraint
+    a rdf:Property ;
+    rdfs:comment "Determines whether the parent should become a Sequential or Parallel" ;
+    rdfs:domain :TaskNetwork ;
+    rdfs:range xsd:boolean .
+
+:hasTaskListMember
+    a rdf:Property , list:ListMembershipProperty ;
+    list:accompanying :hasTaskList ;
+    rdfs:domain :TaskNetwork ;
+    rdfs:range :Task .
+
+:hasTask
+    a rdf:Property ;
+    rdfs:domain :TaskNetwork ;
+    rdfs:range :Task .
+
+:hasPrimitiveTask
+    rdfs:comment "Not intended as a subproperty of hasTask" ;
+    rdfs:domain :PlanningOperator ;
+    rdfs:range :PrimitiveTask .
+
+:forNonPrimitiveTask 
+    rdfs:domain :Method ;
+    rdfs:range :NonPrimitiveTask .
+
+:forTask
+    a rdf:Property ;
+    rdfs:comment "Used to link Workflow activities to the tasks they represent" ;
+    rdfs:domain wild:Activity ;
+    rdfs:range :Task .
+
+:hasTaskNetwork 
+    a rdf:Property ;
+    rdfs:domain :Method , :PlanningProblem ;
+    rdfs:range :TaskNetwork .
+
+:hasParent
+    a rdf:Property ;
+    rdfs:comment "To match child lists to their parents" ;
+    rdfs:domain rdf:List ;
+    rdfs:range wild:Activity .
+
+:atDecompositionState
+    a rdf:Property ;
+    rdfs:domain :PlanningProblemInstance , wild:Activity ;
+    rdfs:range :DecompositionState .
+
+:atVirtualDecompositionState
+    a rdf:Property ;
+    rdfs:domain wild:Activity , rdf:List ;
+    rdfs:range :VirtualDecompositionState .
+
+:hasOutputWorkflowBehaviourRoot
+    a rdf:Property ;
+    rdfs:domain :PlanningProblem ;
+    rdfs:range wild:Activity .
+
+:atMethodState
+    a rdf:Property ;
+    rdfs:domain :MethodStateInformation ;
+    rdfs:range :MethodState .
+
+:aboutMethod
+    a rdf:Property ;
+    rdfs:domain :MethodStateInformation ;
+    rdfs:range :Method .
+
+#
+# Decomposition States
+# ----------------------
+#
+:created
+    a :DecompositionState .
+
+:decomposing
+    a :DecompositionState .
+
+:initialized
+    a :DecompositionState .
+
+:done
+    a :DecompositionState .
+
+:root_created
+    a :DecompositionState .
+
+#
+# Method States
+# ----------------------
+#
+:selected
+    a :MethodState ;
+    rdfs:comment "States that a Method has been selected for decomposition" .
+
+:done
+    a :MethodState ;
+    rdfs:comment "States that a Method was used for decomposition" .
+
+#
+# Virtual Decomposition States
+# ----------------------
+#
+:doneFromListItemOne
+    a :VirtualDecompositionState ;
+    rdfs:comment "Internally states that a child list item is done" .
+
+:doneFromLowestLeaf
+    a :VirtualDecompositionState ;
+    rdfs:comment "Internally states that an activity and all of its descendants are done" .
