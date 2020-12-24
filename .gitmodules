@@ -1,4 +1,4 @@
-[submodule "ldbbc-lists"]
+[submodule "servers/ldbbc-lists"]
 	path = servers/ldbbc-lists
 	url = https://github.com/kaefer3000/ldbbc.git
 	branch = lists
