@@ -17,7 +17,7 @@ In this directory you can store your planning problem descriptions. For referenc
 
 Do not forget to setup your environment (copy `.env` to `.env.local`):
 
-* [LDBBC](https://github.com/kaefer3000/ldbbc) needs to run and be accessible via `http://tok450s.lan:8080/ldbbc/`
+* [LDBBC](https://github.com/kaefer3000/ldbbc) needs to run and be accessible via `http://tok450s.lan/ldbbc/`
 * [Linked Data-Fu](https://linked-data-fu.github.io/) needs to be installed and executable
 
 ### Example UI
