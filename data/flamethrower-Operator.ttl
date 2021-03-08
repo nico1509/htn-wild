@@ -1,0 +1,417 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix http: <http://www.w3.org/2011/http#> .
+@prefix http_m: <http://www.w3.org/2011/http-methods#> .
+
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix sparql-result: <http://www.w3.org/2005/sparql-results#> .
+
+@prefix htn: <http://purl.org/uberq/htn/vocab#> .
+
+@prefix : <#> .
+
+
+#
+#   Offene Fragen/Ideen
+#
+
+# TODO: Tasks könnten universeller werden, wenn wir die RequestURIs dem Operator geben
+# TODO: Die Precondition im Workflow ist hier weniger relevant zum Planen, aber wir brauchen sie wsl. für die Ausführung.
+# TODO: Wir sollten die Postcondition in den PrimitiveTask verschieben oder für jeden PT einen Operator definieren (bitte nicht)
+
+
+#
+#   Operators
+#
+
+:2arm0
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :drop-iron-ore-on-belt0 ,
+        :grip-iron-ore ,
+        :move-to--1-0-0 ,
+        :move-to-1-0-0 ,
+        :wait ,
+        :wait2 ;
+    htn:hasPostcondition :pc .
+
+:2arm1
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :drop-iron-plate-on-belt1 ,
+        :grip-iron-plate ,
+        :move-to--1-0-0 ,
+        :move-to-1-0-0 ,
+        :wait ,
+        :wait2 ;
+    htn:hasPostcondition :pc .
+
+:2belt0
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :on ,
+        :wait ;
+    htn:hasPostcondition :pc .
+
+:2belt1
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :on ,
+        :wait ;
+    htn:hasPostcondition :pc .
+
+:2machine0
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :on ,
+        :wait ;
+    htn:hasPostcondition :pc .
+
+:arm0
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :drop-iron-ore-on-belt0 ,
+        :grip-iron-ore ,
+        :move-to--1-0-0 ,
+        :move-to-1-0-0 ,
+        :wait ,
+        :wait2 ;
+    htn:hasPostcondition :pc .
+
+:arm1
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :drop-iron-plate-on-belt1 ,
+        :grip-iron-plate ,
+        :move-to--1-0-0 ,
+        :move-to-1-0-0 ,
+        :wait ,
+        :wait2 ;
+    htn:hasPostcondition :pc .
+
+:arm2
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :drop-iron-plate-on-belt2 ,
+        :grip-iron-plate ,
+        :move-to--1-0-0 ,
+        :move-to-1-0-0 ,
+        :wait ,
+        :wait2 ;
+    htn:hasPostcondition :pc .
+
+:arm3
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :drop-iron-plate-on-belt3 ,
+        :grip-iron-plate ,
+        :move-to--1-0-0 ,
+        :move-to-1-0-0 ,
+        :wait ,
+        :wait2 ;
+    htn:hasPostcondition :pc .
+
+:arm4
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :drop-steel-plate-on-belt4 ,
+        :grip-steel-plate ,
+        :move-to--1-0-0 ,
+        :move-to-1-0-0 ,
+        :wait ,
+        :wait2 ;
+    htn:hasPostcondition :pc .
+
+:arm5
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :drop-steel-plate-on-belt5 ,
+        :grip-steel-plate ,
+        :move-to--1-0-0 ,
+        :move-to-1-0-0 ,
+        :wait ,
+        :wait2 ;
+    htn:hasPostcondition :pc .
+
+:arm6
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :drop-iron-gearwheel-on-belt6 ,
+        :grip-iron-gearwheel ,
+        :move-to--1-0-0 ,
+        :move-to-1-0-0 ,
+        :wait ,
+        :wait2 ;
+    htn:hasPostcondition :pc .
+
+:arm7
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :drop-iron-gearwheel-on-belt7 ,
+        :grip-iron-gearwheel ,
+        :move-to--1-0-0 ,
+        :move-to-1-0-0 ,
+        :wait ,
+        :wait2 ;
+    htn:hasPostcondition :pc .
+
+:arm8
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :drop-flamethrower-on-belt8 ,
+        :grip-flamethrower ,
+        :move-to--1-0-0 ,
+        :move-to-1-0-0 ,
+        :wait ,
+        :wait2 ;
+    htn:hasPostcondition :pc .
+
+:belt0
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :on ,
+        :wait ;
+    htn:hasPostcondition :pc .
+
+:belt1
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :on ,
+        :wait ;
+    htn:hasPostcondition :pc .
+
+:belt2
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :on ,
+        :wait ;
+    htn:hasPostcondition :pc .
+
+:belt3
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :on ,
+        :wait ;
+    htn:hasPostcondition :pc .
+
+:belt4
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :on ,
+        :wait ;
+    htn:hasPostcondition :pc .
+
+:belt5
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :on ,
+        :wait ;
+    htn:hasPostcondition :pc .
+
+:belt6
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :on ,
+        :wait ;
+    htn:hasPostcondition :pc .
+
+:belt7
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :on ,
+        :wait ;
+    htn:hasPostcondition :pc .
+
+:belt8
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :on ,
+        :wait ;
+    htn:hasPostcondition :pc .
+
+:machine0
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :on ,
+        :wait ;
+    htn:hasPostcondition :pc .
+
+:machine1
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :on ,
+        :wait ;
+    htn:hasPostcondition :pc .
+
+:machine2
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :on ,
+        :wait ;
+    htn:hasPostcondition :pc .
+
+:machine3
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :on ,
+        :wait ;
+    htn:hasPostcondition :pc .
+
+
+#
+#   Primitive Tasks
+#
+
+:drop-iron-ore-on-belt0
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:8080/arm/0/action> ;
+        http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>"
+    ] .
+
+:drop-iron-plate-on-belt1
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:8080/arm/1/action> ;
+        http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>"
+    ] .
+
+:drop-iron-plate-on-belt2
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:8080/arm/2/action> ;
+        http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/2/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>"
+    ] .
+
+:drop-iron-plate-on-belt3
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:8080/arm/3/action> ;
+        http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/3/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>"
+    ] .
+
+:drop-steel-plate-on-belt4
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:8080/arm/4/action> ;
+        http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/4/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>"
+    ] .
+
+:drop-steel-plate-on-belt5
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:8080/arm/5/action> ;
+        http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/5/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>"
+    ] .
+
+:drop-iron-gearwheel-on-belt6
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:8080/arm/6/action> ;
+        http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/6/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>"
+    ] .
+
+:drop-iron-gearwheel-on-belt7
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:8080/arm/7/action> ;
+        http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/7/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>"
+    ] .
+
+:drop-flamethrower-on-belt8
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:8080/arm/8/action> ;
+        http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/8/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>"
+    ] .
+
+:grip-iron-ore
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:8080/arm/0/action> ;
+        http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>"
+    ] .
+
+:grip-iron-plate
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:8080/arm/1/action> ;
+        http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>"
+    ] .
+
+:grip-steel-plate
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:8080/arm/1/action> ;
+        http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>"
+    ] .
+
+:grip-iron-gearwheel
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:8080/arm/6/action> ;
+        http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/6/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" #// https://json-ld.org/playground
+    ] .
+
+:grip-flamethrower
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:8080/arm/8/action> ;
+        http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/8/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" #// https://json-ld.org/playground
+    ] .
+
+:move-to-1-0-0
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:8080/arm/0/action> ;
+        http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" #// der Rest wird �ber die logic control gemacht als Ersatz f�r Berechnungen und Regelung
+    ] .
+
+:move-to--1-0-0
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:8080/arm/0/action> ;
+        http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>"
+    ] .
+
+:on
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:requestURI <http://localhost:8080/belt/0/action> ;
+        http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>"
+    ] .
+
+:wait
+    a htn:PrimitiveTask .
+
+:wait2
+    a htn:PrimitiveTask .
+
+
+#
+#   Postcondition
+#
+
+:pc
+    a sp:Ask ;
+    sparql-result:boolean "true"^^xsd:boolean .

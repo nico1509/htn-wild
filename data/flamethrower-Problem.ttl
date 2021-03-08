@@ -1,0 +1,400 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix http: <http://www.w3.org/2011/http#> .
+@prefix http_m: <http://www.w3.org/2011/http-methods#> .
+
+@prefix sp: <http://spinrdf.org/sp#>.
+@prefix sparql-result: <http://www.w3.org/2005/sparql-results#> .
+
+@prefix ex: <http://example.org/#>.
+@prefix ukeaq: <http://www.student.kit.edu/~ukeaq/uni/voc.ttl#> .
+
+@prefix htn: <http://purl.org/uberq/htn/vocab#> .
+
+@prefix : <#> .
+
+
+#
+#   Offene Fragen/Ideen
+#
+
+# TODO: Wie drücken wir das Ziel aus? :flamethrower :state "done" ?
+# TODO: Method-Preconditions, Operator Postconditions etc. irgendwie in Planning State verwursten
+# TODO: Git-History durchschauen, was damals zum ProblemState etc. gemacht wurde
+# TODO: Dann doesntMatter-Precondition durch gescheite PC ersetzen
+# TODO: Literals nicht mehr nach URI, sondern nach Inhalt identifizieren
+# TODO: Positionsabhängige Literals für jede Position erstellen?
+# TODO: (Wording/Hässliche Problembeschreibung)
+# TODO: Producing Iron Plate und Producing Steel Plate sind sehr ähnlich. Generalisieren?
+# TODO: Freie Storages/Arme dynamisch per Pre/Postcondition und State ermitteln?
+
+
+#
+#   Problem Definition
+#
+
+:flamethrowerFactory
+    a htn:PlanningProblem ;
+    htn:hasTaskNetwork [
+        htn:hasTaskList ([
+            a htn:GoalTask ;
+            htn:hasLiteral [
+                sp:where ([
+                    sp:subject ex:flamethrower ;
+                    sp:predicate ukeaq:hasStatus ;
+                    sp:object "done"
+                ])
+            ]
+        ])
+    ] ;
+    htn:hasOutputWorkflowBehaviourRoot <wfm-behaviour#root> .
+
+
+#
+#   Literals
+#
+
+:doesntMatter
+    a sp:Ask ;
+    sparql-result:boolean "true"^^xsd:boolean .
+
+
+#
+#   Methods
+#
+
+:gettingFlamethrower
+    a htn:Method ;
+    htn:forNonPrimitiveTask [
+        htn:hasLiteral [
+            sp:where ([
+                sp:subject ex:flamethrower ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:object "done"
+            ])
+        ]
+    ] ;
+    htn:hasTaskNetwork [
+        htn:hasOrderingConstraint "true"^^xsd:boolean ;
+        htn:hasTaskList (
+            :produceFlamethrowerMaterial
+            :produceFlamethrower
+        )
+    ] ;
+    htn:hasPrecondition :doesntMatter .
+
+:producingFlamethrowerMaterial
+    a htn:Method ;
+    htn:forNonPrimitiveTask [
+        htn:hasLiteral [
+            sp:where ([
+                sp:subject ex:flamethrowerMaterialProduction ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:object "done"
+            ])
+        ]
+    ] ;
+    htn:hasTaskNetwork [
+        htn:hasOrderingConstraint "false"^^xsd:boolean ;
+        htn:hasTaskList (
+            :assembleSteelPlate
+            :assembleIronGearwheel
+        )
+    ] ;
+    htn:hasPrecondition :doesntMatter .
+
+
+:producingFlamethrower
+    a htn:Method ;
+    htn:forNonPrimitiveTask [
+        htn:hasLiteral [
+            sp:where ([
+                sp:subject ex:flamethrowerProduction ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:object "done"
+            ])
+        ]
+    ] ;
+    htn:hasTaskNetwork [
+        htn:hasOrderingConstraint "true"^^xsd:boolean ;
+        htn:hasTaskList (
+            :transportInput
+            :processInput
+            :transportFlamethrowerToArm
+            :placeFlamethrowerIntoStorage
+        )
+    ] ;
+    htn:hasPrecondition :doesntMatter .
+
+:assemblingSteelPlate
+    a htn:Method ;
+    htn:forNonPrimitiveTask [
+        htn:hasLiteral [
+            sp:where ([
+                sp:subject ex:steelPlateAssembly ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:object "done"
+            ])
+        ]
+    ] ;
+    htn:hasTaskNetwork [
+        htn:hasOrderingConstraint "true"^^xsd:boolean ;
+        htn:hasTaskList (
+            :produceIronPlate
+            :produceSteelPlate
+        )
+    ] ;
+    htn:hasPrecondition :doesntMatter .
+
+:assemblingIronGearwheel
+    a htn:Method ;
+    htn:forNonPrimitiveTask [
+        htn:hasLiteral [
+            sp:where ([
+                sp:subject ex:ironGearwheelAssembly ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:object "done"
+            ])
+        ]
+    ] ;
+    htn:hasTaskNetwork [
+        htn:hasOrderingConstraint "true"^^xsd:boolean ;
+        htn:hasTaskList (
+            :produceIronPlate
+            :produceIronGearwheel
+        )
+    ] ;
+    htn:hasPrecondition :doesntMatter .
+
+:producingIronPlate
+    a htn:Method ;
+    htn:forNonPrimitiveTask [
+        htn:hasLiteral [
+            sp:where ([
+                sp:subject ex:ironPlateProduction ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:object "done"
+            ])
+        ]
+    ] ;
+    htn:hasTaskNetwork [
+        htn:hasOrderingConstraint "true"^^xsd:boolean ;
+        htn:hasTaskList (
+            :placeIronOreOnBelt
+            :transportIronOreToMachine
+            :processIronOre
+            :transportIronPlateToArm
+            :placeIronPlateIntoStorage
+        )
+    ] ;
+    htn:hasPrecondition :doesntMatter .
+
+:producingSteelPlate
+    a htn:Method ;
+    htn:forNonPrimitiveTask [
+        htn:hasLiteral [
+            sp:where ([
+                sp:subject ex:steelPlateProduction ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:object "done"
+            ])
+        ]
+    ] ;
+    htn:hasTaskNetwork [
+        htn:hasOrderingConstraint "true"^^xsd:boolean ;
+        htn:hasTaskList (
+            :placeIronPlateOnBelt
+            :transportIronPlateToMachine
+            :processIronPlate
+            :transportSteelPlateToArm
+            :placeSteelPlateIntoStorage
+        )
+    ] ;
+    htn:hasPrecondition :doesntMatter .
+
+:producingIronGearwheel
+    a htn:Method ;
+    htn:forNonPrimitiveTask [
+        htn:hasLiteral [
+            sp:where ([
+                sp:subject ex:ironGearwheelProduction ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:object "done"
+            ])
+        ]
+    ] ;
+    htn:hasTaskNetwork [
+        htn:hasOrderingConstraint "true"^^xsd:boolean ;
+        htn:hasTaskList (
+            :placeIronPlateOnBelt
+            :transportIronPlateToMachine
+            :processIronPlate
+            :transportIronGearwheelToArm
+            :placeIronGearwheelIntoStorage
+        )
+    ] ;
+    htn:hasPrecondition :doesntMatter .
+
+:placingIronOreOnBelt
+    a htn:Method ;
+    htn:forNonPrimitiveTask [
+        htn:hasLiteral [
+            sp:where ([
+                sp:subject ex:ironOreOnBelt ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:object "done"
+            ])
+        ]
+    ] ;
+    htn:hasTaskNetwork [
+        htn:hasOrderingConstraint "true"^^xsd:boolean ;
+        htn:hasTaskList (
+            #:wait
+            :gripIronPlate
+            :moveDownRight
+            #:wait
+            :dropIronPlateOnBelt
+            :moveDownLeft
+        )
+    ] ;
+    htn:hasPrecondition :doesntMatter .
+
+
+#
+#   Tasks
+#
+
+:produceFlamethrowerMaterial
+    a htn:GoalTask ;
+    htn:hasLiteral [
+        sp:where ([
+            sp:subject ex:flamethrowerMaterialProduction ;
+            sp:predicate ukeaq:hasStatus ;
+            sp:object "done"
+        ])
+    ] .
+
+:produceFlamethrower
+    a htn:GoalTask ;
+    htn:hasLiteral [
+        sp:where ([
+            sp:subject ex:flamethrowerProduction ;
+            sp:predicate ukeaq:hasStatus ;
+            sp:object "done"
+        ])
+    ] .
+
+:assembleSteelPlate
+    a htn:GoalTask ;
+    htn:hasLiteral [
+        sp:where ([
+            sp:subject ex:steelPlateAssembly ;
+            sp:predicate ukeaq:hasStatus ;
+            sp:object "done"
+        ])
+    ] .
+
+:assembleIronGearwheel
+    a htn:GoalTask ;
+    htn:hasLiteral [
+        sp:where ([
+            sp:subject ex:ironGearwheelAssembly ;
+            sp:predicate ukeaq:hasStatus ;
+            sp:object "done"
+        ])
+    ] .
+
+:produceIronPlate
+    a htn:GoalTask ;
+    htn:hasLiteral [
+        sp:where ([
+            sp:subject ex:ironPlateProduction ;
+            sp:predicate ukeaq:hasStatus ;
+            sp:object "done"
+        ])
+    ] .
+
+:produceSteelPlate
+    a htn:GoalTask ;
+    htn:hasLiteral [
+        sp:where ([
+            sp:subject ex:steelPlateProduction ;
+            sp:predicate ukeaq:hasStatus ;
+            sp:object "done"
+        ])
+    ] .
+
+:produceIronGearwheel
+    a htn:GoalTask ;
+    htn:hasLiteral [
+        sp:where ([
+            sp:subject ex:ironGearwheelProduction ;
+            sp:predicate ukeaq:hasStatus ;
+            sp:object "done"
+        ])
+    ] .
+
+:placeIronOreOnBelt
+    a htn:GoalTask ;
+    htn:hasLiteral [
+        sp:where ([
+            sp:subject ex:ironOreOnBelt ;
+            sp:predicate ukeaq:hasStatus ;
+            sp:object "done"
+        ])
+    ] .
+
+:gripIronPlate
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:POST ;
+        http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>"
+    ] .
+
+# :transportInput
+#     a htn:GoalTask ;
+#     htn:hasLiteral [
+#         sp:where ([
+#             sp:subject ex:inputTransportation ;
+#             sp:predicate ukeaq:hasStatus ;
+#             sp:object "done"
+#         ])
+#     ] .
+
+# :processInput
+#     a htn:GoalTask ;
+#     htn:hasLiteral [
+#         sp:where ([
+#             sp:subject ex:inputProcessing ;
+#             sp:predicate ukeaq:hasStatus ;
+#             sp:object "done"
+#         ])
+#     ] .
+
+# :transportFlamethrowerToArm
+#     a htn:GoalTask ;
+#     htn:hasLiteral [
+#         sp:where ([
+#             sp:subject ex:flamethrowerToArmTransportation ;
+#             sp:predicate ukeaq:hasStatus ;
+#             sp:object "done"
+#         ])
+#     ] .
+
+# :placeFlamethrowerIntoStorage
+#     a htn:GoalTask ;
+#     htn:hasLiteral [
+#         sp:where ([
+#             sp:subject ex:flamethrowerStoragePlacement ;
+#             sp:predicate ukeaq:hasStatus ;
+#             sp:object "done"
+#         ])
+#     ] .
+
+
+#
+#   Initial State
+#
