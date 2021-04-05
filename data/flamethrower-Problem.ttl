@@ -66,333 +66,901 @@
 #   Methods
 #
 
-:gettingFlamethrower
-    a htn:Method ;
-    htn:forNonPrimitiveTask [
-        htn:hasLiteral [
-            sp:where ([
-                sp:subject ex:flamethrower ;
-                sp:predicate ukeaq:hasStatus ;
-                sp:object "done"
-            ])
-        ]
-    ] ;
-    htn:hasTaskNetwork [
-        htn:hasOrderingConstraint "true"^^xsd:boolean ;
-        htn:hasTaskList (
-            :produceFlamethrowerMaterial
-            :produceFlamethrower
-        )
-    ] ;
-    htn:hasPrecondition :doesntMatter .
+:root a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :root ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :flamethrower-input-material-production :flamethrower-production ) ] .
 
-:producingFlamethrowerMaterial
-    a htn:Method ;
-    htn:forNonPrimitiveTask [
-        htn:hasLiteral [
-            sp:where ([
-                sp:subject ex:flamethrowerMaterialProduction ;
-                sp:predicate ukeaq:hasStatus ;
-                sp:object "done"
-            ])
-        ]
-    ] ;
-    htn:hasTaskNetwork [
-        htn:hasOrderingConstraint "false"^^xsd:boolean ;
-        htn:hasTaskList (
-            :assembleSteelPlate
-            :assembleIronGearwheel
-        )
-    ] ;
-    htn:hasPrecondition :doesntMatter .
+:2arm0-place-iron-ore-on-belt0 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :2arm0-place-iron-ore-on-belt0 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :wait :2arm0-wait :2arm0-grip-iron-ore :2arm0-move-to-1-0-0 :2arm0-wait2 :2arm0-drop-iron-ore-on-belt0 :2arm0-move-to--1-0-0 ) ] .
 
+:2arm1-place-iron-plate-into-storage1 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :2arm1-place-iron-plate-into-storage1 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :2arm1-wait :2arm1-grip-iron-plate :2arm1-move-to-1-0-0 :2arm1-wait2 :2arm1-drop-iron-plate-on-belt1 :2arm1-move-to--1-0-0 ) ] .
 
-:producingFlamethrower
-    a htn:Method ;
-    htn:forNonPrimitiveTask [
-        htn:hasLiteral [
-            sp:where ([
-                sp:subject ex:flamethrowerProduction ;
-                sp:predicate ukeaq:hasStatus ;
-                sp:object "done"
-            ])
-        ]
-    ] ;
-    htn:hasTaskNetwork [
-        htn:hasOrderingConstraint "true"^^xsd:boolean ;
-        htn:hasTaskList (
-            :transportInput
-            :processInput
-            :transportFlamethrowerToArm
-            :placeFlamethrowerIntoStorage
-        )
-    ] ;
-    htn:hasPrecondition :doesntMatter .
+:2belt0-transport-iron-ore-to-machine0 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :2belt0-transport-iron-ore-to-machine0 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :2belt0-wait :2belt0-on ) ] .
 
-:assemblingSteelPlate
-    a htn:Method ;
-    htn:forNonPrimitiveTask [
-        htn:hasLiteral [
-            sp:where ([
-                sp:subject ex:steelPlateAssembly ;
-                sp:predicate ukeaq:hasStatus ;
-                sp:object "done"
-            ])
-        ]
-    ] ;
-    htn:hasTaskNetwork [
-        htn:hasOrderingConstraint "true"^^xsd:boolean ;
-        htn:hasTaskList (
-            :produceIronPlate
-            :produceSteelPlate
-        )
-    ] ;
-    htn:hasPrecondition :doesntMatter .
+:2belt1-transport-iron-plate-to-arm1 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :2belt1-transport-iron-plate-to-arm1 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :2belt1-wait :2belt1-on ) ] .
 
-:assemblingIronGearwheel
-    a htn:Method ;
-    htn:forNonPrimitiveTask [
-        htn:hasLiteral [
-            sp:where ([
-                sp:subject ex:ironGearwheelAssembly ;
-                sp:predicate ukeaq:hasStatus ;
-                sp:object "done"
-            ])
-        ]
-    ] ;
-    htn:hasTaskNetwork [
-        htn:hasOrderingConstraint "true"^^xsd:boolean ;
-        htn:hasTaskList (
-            :produceIronPlate
-            :produceIronGearwheel
-        )
-    ] ;
-    htn:hasPrecondition :doesntMatter .
+:2machine0-process-iron-ore a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :2machine0-process-iron-ore ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :2machine0-wait :2machine0-on ) ] .
 
-:producingIronPlate
-    a htn:Method ;
-    htn:forNonPrimitiveTask [
-        htn:hasLiteral [
-            sp:where ([
-                sp:subject ex:ironPlateProduction ;
-                sp:predicate ukeaq:hasStatus ;
-                sp:object "done"
-            ])
-        ]
-    ] ;
-    htn:hasTaskNetwork [
-        htn:hasOrderingConstraint "true"^^xsd:boolean ;
-        htn:hasTaskList (
-            :placeIronOreOnBelt
-            :transportIronOreToMachine
-            :processIronOre
-            :transportIronPlateToArm
-            :placeIronPlateIntoStorage
-        )
-    ] ;
-    htn:hasPrecondition :doesntMatter .
+:arm0-place-iron-ore-on-belt0 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :arm0-place-iron-ore-on-belt0 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :arm0-wait :arm0-grip-iron-ore :arm0-move-to-1-0-0 :arm0-wait2 :arm0-drop-iron-ore-on-belt0 :arm0-move-to--1-0-0 ) ] .
 
-:producingSteelPlate
-    a htn:Method ;
-    htn:forNonPrimitiveTask [
-        htn:hasLiteral [
-            sp:where ([
-                sp:subject ex:steelPlateProduction ;
-                sp:predicate ukeaq:hasStatus ;
-                sp:object "done"
-            ])
-        ]
-    ] ;
-    htn:hasTaskNetwork [
-        htn:hasOrderingConstraint "true"^^xsd:boolean ;
-        htn:hasTaskList (
-            :placeIronPlateOnBelt
-            :transportIronPlateToMachine
-            :processIronPlate
-            :transportSteelPlateToArm
-            :placeSteelPlateIntoStorage
-        )
-    ] ;
-    htn:hasPrecondition :doesntMatter .
+:arm1-place-iron-plate-into-storage1 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :arm1-place-iron-plate-into-storage1 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :arm1-wait :arm1-grip-iron-plate :arm1-move-to-1-0-0 :arm1-wait2 :arm1-drop-iron-plate-on-belt1 :arm1-move-to--1-0-0 ) ] .
 
-:producingIronGearwheel
-    a htn:Method ;
-    htn:forNonPrimitiveTask [
-        htn:hasLiteral [
-            sp:where ([
-                sp:subject ex:ironGearwheelProduction ;
-                sp:predicate ukeaq:hasStatus ;
-                sp:object "done"
-            ])
-        ]
-    ] ;
-    htn:hasTaskNetwork [
-        htn:hasOrderingConstraint "true"^^xsd:boolean ;
-        htn:hasTaskList (
-            :placeIronPlateOnBelt
-            :transportIronPlateToMachine
-            :processIronPlate
-            :transportIronGearwheelToArm
-            :placeIronGearwheelIntoStorage
-        )
-    ] ;
-    htn:hasPrecondition :doesntMatter .
+:arm2-place-iron-plate-on-belt2 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :arm2-place-iron-plate-on-belt2 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :arm2-wait :arm2-grip-iron-plate :arm2-move-to-1-0-0 :arm2-wait2 :arm2-drop-iron-plate-on-belt2 :arm2-move-to--1-0-0 ) ] .
 
-:placingIronOreOnBelt
-    a htn:Method ;
-    htn:forNonPrimitiveTask [
-        htn:hasLiteral [
-            sp:where ([
-                sp:subject ex:ironOreOnBelt ;
-                sp:predicate ukeaq:hasStatus ;
-                sp:object "done"
-            ])
-        ]
-    ] ;
-    htn:hasTaskNetwork [
-        htn:hasOrderingConstraint "true"^^xsd:boolean ;
-        htn:hasTaskList (
-            #:wait
-            :gripIronPlate
-            :moveDownRight
-            #:wait
-            :dropIronPlateOnBelt
-            :moveDownLeft
-        )
-    ] ;
-    htn:hasPrecondition :doesntMatter .
+:arm3-place-iron-plate-on-belt3 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :arm3-place-iron-plate-on-belt3 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :arm3-wait :arm3-grip-iron-plate :arm3-move-to-1-0-0 :arm3-wait2 :arm3-drop-iron-plate-on-belt3 :arm3-move-to--1-0-0 ) ] .
+
+:arm4-place-steel-plate-into-storage2 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :arm4-place-steel-plate-into-storage2 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :arm4-wait :arm4-grip-steel-plate :arm4-move-to-1-0-0 :arm4-wait2 :arm4-drop-steel-plate-on-belt4 :arm4-move-to--1-0-0 ) ] .
+
+:arm5-place-steel-plate-on-belt5 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :arm5-place-steel-plate-on-belt5 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :arm5-wait :arm5-grip-steel-plate :arm5-move-to-1-0-0 :arm5-wait2 :arm5-drop-steel-plate-on-belt5 :arm5-move-to--1-0-0 ) ] .
+
+:arm6-place-iron-gearwheel-into-storage3 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :arm6-place-iron-gearwheel-into-storage3 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :arm6-wait :arm6-grip-iron-gearwheel :arm6-move-to-1-0-0 :arm6-wait2 :arm6-drop-iron-gearwheel-on-belt6 :arm6-move-to--1-0-0 ) ] .
+
+:arm7-place-iron-gearwheel-on-belt7 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :arm7-place-iron-gearwheel-on-belt7 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :arm7-wait :arm7-grip-iron-gearwheel :arm7-move-to-1-0-0 :arm7-wait2 :arm7-drop-iron-gearwheel-on-belt7 :arm7-move-to--1-0-0 ) ] .
+
+:arm8-place-flamethrower-into-storage4 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :arm8-place-flamethrower-into-storage4 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :arm8-wait :arm8-grip-flamethrower :arm8-move-to-1-0-0 :arm8-wait2 :arm8-drop-flamethrower-on-belt8 :arm8-move-to--1-0-0 ) ] .
+
+:belt0-transport-iron-ore-to-machine0 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :belt0-transport-iron-ore-to-machine0 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :belt0-wait :belt0-on ) ] .
+
+:belt1-transport-iron-plate-to-arm1 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :belt1-transport-iron-plate-to-arm1 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :belt1-wait :belt1-on ) ] .
+
+:belt2-transport-iron-plate-to-machine1 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :belt2-transport-iron-plate-to-machine1 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :belt2-wait :belt2-on ) ] .
+
+:belt3-transport-iron-plate-to-machine2 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :belt3-transport-iron-plate-to-machine2 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :belt3-wait :belt3-on ) ] .
+
+:belt4-transport-steel-plate-to-arm4 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :belt4-transport-steel-plate-to-arm4 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :belt4-wait :belt4-on ) ] .
+
+:belt5-transport-steel-plate-to-machine3 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :belt5-transport-steel-plate-to-machine3 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :belt5-wait :belt5-on ) ] .
+
+:belt6-transport-iron-gearwheel-to-arm6 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :belt6-transport-iron-gearwheel-to-arm6 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :belt6-wait :belt6-on ) ] .
+
+:belt7-transport-iron-gearwheel-to-machine3 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :belt7-transport-iron-gearwheel-to-machine3 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :belt7-wait :belt7-on ) ] .
+
+:belt8-transport-flamethrower-to-arm8 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :belt8-transport-flamethrower-to-arm8 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :belt8-wait :belt8-on ) ] .
+
+:flamethrower-input-material-production a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :flamethrower-input-material-production ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint false ;
+            htn:hasTaskList ( :steel-plate-assembly :iron-gearwheel-assembly ) ] .
+
+:flamethrower-production a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :flamethrower-production ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :input-transport :machine3-process-input :belt8-transport-flamethrower-to-arm8 :arm8-place-flamethrower-into-storage4 ) ] .
+
+:input-transport a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :input-transport ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint false ;
+            htn:hasTaskList ( :steel-plate-transport :iron-gearwheel-transport ) ] .
+
+:iron-gearwheel-assembly a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :iron-gearwheel-assembly ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :iron-plate-production2 :iron-gearwheel-production ) ] .
+
+:iron-gearwheel-production a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :iron-gearwheel-production ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :arm3-place-iron-plate-on-belt3 :belt3-transport-iron-plate-to-machine2 :machine2-process-iron-plate :belt6-transport-iron-gearwheel-to-arm6 :arm6-place-iron-gearwheel-into-storage3 ) ] .
+
+:iron-gearwheel-transport a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :iron-gearwheel-transport ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :arm7-place-iron-gearwheel-on-belt7 :belt7-transport-iron-gearwheel-to-machine3 ) ] .
+
+:iron-plate-production a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :iron-plate-production ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :arm0-place-iron-ore-on-belt0 :belt0-transport-iron-ore-to-machine0 :machine0-process-iron-ore :belt1-transport-iron-plate-to-arm1 :arm1-place-iron-plate-into-storage1 ) ] .
+
+:iron-plate-production2 a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :iron-plate-production2 ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :2arm0-place-iron-ore-on-belt0 :2belt0-transport-iron-ore-to-machine0 :2machine0-process-iron-ore :2belt1-transport-iron-plate-to-arm1 :2arm1-place-iron-plate-into-storage1 ) ] .
+
+:machine0-process-iron-ore a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :machine0-process-iron-ore ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :machine0-wait :machine0-on ) ] .
+
+:machine1-process-iron-plate a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :machine1-process-iron-plate ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :machine1-wait :machine1-on ) ] .
+
+:machine2-process-iron-plate a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :machine2-process-iron-plate ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :machine2-wait :machine2-on ) ] .
+
+:machine3-process-input a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :machine3-process-input ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :machine3-wait :machine3-on ) ] .
+
+:steel-plate-assembly a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :steel-plate-assembly ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :iron-plate-production :steel-plate-production ) ] .
+
+:steel-plate-production a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :steel-plate-production ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :arm2-place-iron-plate-on-belt2 :belt2-transport-iron-plate-to-machine1 :machine1-process-iron-plate :belt4-transport-steel-plate-to-arm4 :arm4-place-steel-plate-into-storage2 ) ] .
+
+:steel-plate-transport a htn:Method ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
+                                sp:predicate ex:done ;
+                                sp:subject :steel-plate-transport ] ) ] ] ;
+    htn:hasPrecondition :doesntMatter ;
+    htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
+            htn:hasTaskList ( :arm5-place-steel-plate-on-belt5 :belt5-transport-steel-plate-to-machine3 ) ] .
 
 
 #
 #   Tasks
 #
 
-:produceFlamethrowerMaterial
-    a htn:GoalTask ;
-    htn:hasLiteral [
-        sp:where ([
-            sp:subject ex:flamethrowerMaterialProduction ;
-            sp:predicate ukeaq:hasStatus ;
-            sp:object "done"
-        ])
-    ] .
+#
+#   > Goal Tasks
+#
 
-:produceFlamethrower
-    a htn:GoalTask ;
-    htn:hasLiteral [
-        sp:where ([
-            sp:subject ex:flamethrowerProduction ;
-            sp:predicate ukeaq:hasStatus ;
-            sp:object "done"
-        ])
-    ] .
+:2arm0-place-iron-ore-on-belt0 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :2arm0-place-iron-ore-on-belt0 ] ) ] .
 
-:assembleSteelPlate
-    a htn:GoalTask ;
-    htn:hasLiteral [
-        sp:where ([
-            sp:subject ex:steelPlateAssembly ;
-            sp:predicate ukeaq:hasStatus ;
-            sp:object "done"
-        ])
-    ] .
+:2arm1-place-iron-plate-into-storage1 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :2arm1-place-iron-plate-into-storage1 ] ) ] .
 
-:assembleIronGearwheel
-    a htn:GoalTask ;
-    htn:hasLiteral [
-        sp:where ([
-            sp:subject ex:ironGearwheelAssembly ;
-            sp:predicate ukeaq:hasStatus ;
-            sp:object "done"
-        ])
-    ] .
+:2belt0-transport-iron-ore-to-machine0 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :2belt0-transport-iron-ore-to-machine0 ] ) ] .
 
-:produceIronPlate
-    a htn:GoalTask ;
-    htn:hasLiteral [
-        sp:where ([
-            sp:subject ex:ironPlateProduction ;
-            sp:predicate ukeaq:hasStatus ;
-            sp:object "done"
-        ])
-    ] .
+:2belt1-transport-iron-plate-to-arm1 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :2belt1-transport-iron-plate-to-arm1 ] ) ] .
 
-:produceSteelPlate
-    a htn:GoalTask ;
-    htn:hasLiteral [
-        sp:where ([
-            sp:subject ex:steelPlateProduction ;
-            sp:predicate ukeaq:hasStatus ;
-            sp:object "done"
-        ])
-    ] .
+:2machine0-process-iron-ore a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :2machine0-process-iron-ore ] ) ] .
 
-:produceIronGearwheel
-    a htn:GoalTask ;
-    htn:hasLiteral [
-        sp:where ([
-            sp:subject ex:ironGearwheelProduction ;
-            sp:predicate ukeaq:hasStatus ;
-            sp:object "done"
-        ])
-    ] .
+:arm0-place-iron-ore-on-belt0 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :arm0-place-iron-ore-on-belt0 ] ) ] .
 
-:placeIronOreOnBelt
-    a htn:GoalTask ;
-    htn:hasLiteral [
-        sp:where ([
-            sp:subject ex:ironOreOnBelt ;
-            sp:predicate ukeaq:hasStatus ;
-            sp:object "done"
-        ])
-    ] .
+:arm1-place-iron-plate-into-storage1 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :arm1-place-iron-plate-into-storage1 ] ) ] .
 
-:gripIronPlate
-    a htn:PrimitiveTask ;
-    htn:hasHttpRequest [
-        http:mthd http_m:POST ;
-        http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>"
-    ] .
+:arm2-place-iron-plate-on-belt2 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :arm2-place-iron-plate-on-belt2 ] ) ] .
 
-# :transportInput
-#     a htn:GoalTask ;
-#     htn:hasLiteral [
-#         sp:where ([
-#             sp:subject ex:inputTransportation ;
-#             sp:predicate ukeaq:hasStatus ;
-#             sp:object "done"
-#         ])
-#     ] .
+:arm3-place-iron-plate-on-belt3 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :arm3-place-iron-plate-on-belt3 ] ) ] .
 
-# :processInput
-#     a htn:GoalTask ;
-#     htn:hasLiteral [
-#         sp:where ([
-#             sp:subject ex:inputProcessing ;
-#             sp:predicate ukeaq:hasStatus ;
-#             sp:object "done"
-#         ])
-#     ] .
+:arm4-place-steel-plate-into-storage2 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :arm4-place-steel-plate-into-storage2 ] ) ] .
 
-# :transportFlamethrowerToArm
-#     a htn:GoalTask ;
-#     htn:hasLiteral [
-#         sp:where ([
-#             sp:subject ex:flamethrowerToArmTransportation ;
-#             sp:predicate ukeaq:hasStatus ;
-#             sp:object "done"
-#         ])
-#     ] .
+:arm5-place-steel-plate-on-belt5 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :arm5-place-steel-plate-on-belt5 ] ) ] .
 
-# :placeFlamethrowerIntoStorage
-#     a htn:GoalTask ;
-#     htn:hasLiteral [
-#         sp:where ([
-#             sp:subject ex:flamethrowerStoragePlacement ;
-#             sp:predicate ukeaq:hasStatus ;
-#             sp:object "done"
-#         ])
-#     ] .
+:arm6-place-iron-gearwheel-into-storage3 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :arm6-place-iron-gearwheel-into-storage3 ] ) ] .
+
+:arm7-place-iron-gearwheel-on-belt7 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :arm7-place-iron-gearwheel-on-belt7 ] ) ] .
+
+:arm8-place-flamethrower-into-storage4 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :arm8-place-flamethrower-into-storage4 ] ) ] .
+
+:belt0-transport-iron-ore-to-machine0 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :belt0-transport-iron-ore-to-machine0 ] ) ] .
+
+:belt1-transport-iron-plate-to-arm1 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :belt1-transport-iron-plate-to-arm1 ] ) ] .
+
+:belt2-transport-iron-plate-to-machine1 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :belt2-transport-iron-plate-to-machine1 ] ) ] .
+
+:belt3-transport-iron-plate-to-machine2 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :belt3-transport-iron-plate-to-machine2 ] ) ] .
+
+:belt4-transport-steel-plate-to-arm4 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :belt4-transport-steel-plate-to-arm4 ] ) ] .
+
+:belt5-transport-steel-plate-to-machine3 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :belt5-transport-steel-plate-to-machine3 ] ) ] .
+
+:belt6-transport-iron-gearwheel-to-arm6 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :belt6-transport-iron-gearwheel-to-arm6 ] ) ] .
+
+:belt7-transport-iron-gearwheel-to-machine3 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :belt7-transport-iron-gearwheel-to-machine3 ] ) ] .
+
+:belt8-transport-flamethrower-to-arm8 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :belt8-transport-flamethrower-to-arm8 ] ) ] .
+
+:flamethrower-input-material-production a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :flamethrower-input-material-production ] ) ] .
+
+:flamethrower-production a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :flamethrower-production ] ) ] .
+
+:input-transport a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :input-transport ] ) ] .
+
+:iron-gearwheel-assembly a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :iron-gearwheel-assembly ] ) ] .
+
+:iron-gearwheel-production a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :iron-gearwheel-production ] ) ] .
+
+:iron-gearwheel-transport a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :iron-gearwheel-transport ] ) ] .
+
+:iron-plate-production a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :iron-plate-production ] ) ] .
+
+:iron-plate-production2 a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :iron-plate-production2 ] ) ] .
+
+:machine0-process-iron-ore a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :machine0-process-iron-ore ] ) ] .
+
+:machine1-process-iron-plate a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :machine1-process-iron-plate ] ) ] .
+
+:machine2-process-iron-plate a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :machine2-process-iron-plate ] ) ] .
+
+:machine3-process-input a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :machine3-process-input ] ) ] .
+
+:root a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :root ] ) ] .
+
+:steel-plate-assembly a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :steel-plate-assembly ] ) ] .
+
+:steel-plate-production a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :steel-plate-production ] ) ] .
+
+:steel-plate-transport a htn:GoalTask ;
+    htn:hasLiteral [ sp:where ( [ sp:object true ;
+                        sp:predicate ex:done ;
+                        sp:subject :steel-plate-transport ] ) ] .
+
+#
+#   > Primitive Tasks
+#
+
+:2arm0-drop-iron-ore-on-belt0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/0/action> ] .
+
+:2arm0-grip-iron-ore a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/0/action> ] .
+
+:2arm0-move-to--1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/0/action> ] .
+
+:2arm0-move-to-1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/0/action> ] .
+
+:2arm0-wait a htn:PrimitiveTask .
+
+:2arm0-wait2 a htn:PrimitiveTask .
+
+:2arm1-drop-iron-plate-on-belt1 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/1/action> ] .
+
+:2arm1-grip-iron-plate a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/1/action> ] .
+
+:2arm1-move-to--1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/1/action> ] .
+
+:2arm1-move-to-1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/1/action> ] .
+
+:2arm1-wait a htn:PrimitiveTask .
+
+:2arm1-wait2 a htn:PrimitiveTask .
+
+:2belt0-on a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/belt/0/action> ] .
+
+:2belt0-wait a htn:PrimitiveTask .
+
+:2belt1-on a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/belt/1/action> ] .
+
+:2belt1-wait a htn:PrimitiveTask .
+
+:2machine0-on a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/machine/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/machine/0/action> ] .
+
+:2machine0-wait a htn:PrimitiveTask .
+
+:arm0-drop-iron-ore-on-belt0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/0/action> ] .
+
+:arm0-grip-iron-ore a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/0/action> ] .
+
+:arm0-move-to--1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/0/action> ] .
+
+:arm0-move-to-1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/0/action> ] .
+
+:arm0-wait a htn:PrimitiveTask .
+
+:arm0-wait2 a htn:PrimitiveTask .
+
+:arm1-drop-iron-plate-on-belt1 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/1/action> ] .
+
+:arm1-grip-iron-plate a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/1/action> ] .
+
+:arm1-move-to--1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/1/action> ] .
+
+:arm1-move-to-1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/1/action> ] .
+
+:arm1-wait a htn:PrimitiveTask .
+
+:arm1-wait2 a htn:PrimitiveTask .
+
+:arm2-drop-iron-plate-on-belt2 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/2/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/2/action> ] .
+
+:arm2-grip-iron-plate a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/2/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/2/action> ] .
+
+:arm2-move-to--1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/2/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/2/action> ] .
+
+:arm2-move-to-1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/2/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/2/action> ] .
+
+:arm2-wait a htn:PrimitiveTask .
+
+:arm2-wait2 a htn:PrimitiveTask .
+
+:arm3-drop-iron-plate-on-belt3 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/3/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/3/action> ] .
+
+:arm3-grip-iron-plate a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/3/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/3/action> ] .
+
+:arm3-move-to--1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/3/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/3/action> ] .
+
+:arm3-move-to-1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/3/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/3/action> ] .
+
+:arm3-wait a htn:PrimitiveTask .
+
+:arm3-wait2 a htn:PrimitiveTask .
+
+:arm4-drop-steel-plate-on-belt4 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/4/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/4/action> ] .
+
+:arm4-grip-steel-plate a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/4/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/4/action> ] .
+
+:arm4-move-to--1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/4/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/4/action> ] .
+
+:arm4-move-to-1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/4/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/4/action> ] .
+
+:arm4-wait a htn:PrimitiveTask .
+
+:arm4-wait2 a htn:PrimitiveTask .
+
+:arm5-drop-steel-plate-on-belt5 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/5/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/5/action> ] .
+
+:arm5-grip-steel-plate a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/5/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/5/action> ] .
+
+:arm5-move-to--1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/5/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/5/action> ] .
+
+:arm5-move-to-1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/5/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/5/action> ] .
+
+:arm5-wait a htn:PrimitiveTask .
+
+:arm5-wait2 a htn:PrimitiveTask .
+
+:arm6-drop-iron-gearwheel-on-belt6 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/6/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/6/action> ] .
+
+:arm6-grip-iron-gearwheel a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/6/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/6/action> ] .
+
+:arm6-move-to--1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/6/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/6/action> ] .
+
+:arm6-move-to-1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/6/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/6/action> ] .
+
+:arm6-wait a htn:PrimitiveTask .
+
+:arm6-wait2 a htn:PrimitiveTask .
+
+:arm7-drop-iron-gearwheel-on-belt7 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/7/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/7/action> ] .
+
+:arm7-grip-iron-gearwheel a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/7/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/7/action> ] .
+
+:arm7-move-to--1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/7/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/7/action> ] .
+
+:arm7-move-to-1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/7/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/7/action> ] .
+
+:arm7-wait a htn:PrimitiveTask .
+
+:arm7-wait2 a htn:PrimitiveTask .
+
+:arm8-drop-flamethrower-on-belt8 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/8/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/8/action> ] .
+
+:arm8-grip-flamethrower a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/8/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/8/action> ] .
+
+:arm8-move-to--1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/8/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/8/action> ] .
+
+:arm8-move-to-1-0-0 a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/8/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/arm/8/action> ] .
+
+:arm8-wait a htn:PrimitiveTask .
+
+:arm8-wait2 a htn:PrimitiveTask .
+
+:belt0-on a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/belt/0/action> ] .
+
+:belt0-wait a htn:PrimitiveTask .
+
+:belt1-on a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/belt/1/action> ] .
+
+:belt1-wait a htn:PrimitiveTask .
+
+:belt2-on a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/2/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/belt/2/action> ] .
+
+:belt2-wait a htn:PrimitiveTask .
+
+:belt3-on a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/3/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/belt/3/action> ] .
+
+:belt3-wait a htn:PrimitiveTask .
+
+:belt4-on a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/4/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/belt/4/action> ] .
+
+:belt4-wait a htn:PrimitiveTask .
+
+:belt5-on a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/5/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/belt/5/action> ] .
+
+:belt5-wait a htn:PrimitiveTask .
+
+:belt6-on a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/6/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/belt/6/action> ] .
+
+:belt6-wait a htn:PrimitiveTask .
+
+:belt7-on a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/7/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/belt/7/action> ] .
+
+:belt7-wait a htn:PrimitiveTask .
+
+:belt8-on a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/8/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/belt/8/action> ] .
+
+:belt8-wait a htn:PrimitiveTask .
+
+:machine0-on a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/machine/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/machine/0/action> ] .
+
+:machine0-wait a htn:PrimitiveTask .
+
+:machine1-on a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/machine/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/machine/1/action> ] .
+
+:machine1-wait a htn:PrimitiveTask .
+
+:machine2-on a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/machine/2/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/machine/2/action> ] .
+
+:machine2-wait a htn:PrimitiveTask .
+
+:machine3-on a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/machine/3/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
+            http:mthd http_m:POST ;
+            http:requestURI <http://localhost:8080/machine/3/action> ] .
+
+:machine3-wait a htn:PrimitiveTask .
 
 
 #
