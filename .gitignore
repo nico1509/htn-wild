@@ -1,1 +1,4 @@
 **/.env.local
+
+# For temporary/debugging files like sparql-results
+.dev/
