@@ -39,16 +39,9 @@
 :flamethrowerFactory
     a htn:PlanningProblem ;
     htn:hasTaskNetwork [
-        htn:hasTaskList ([
-            a htn:GoalTask ;
-            htn:hasLiteral [
-                sp:where ([
-                    sp:subject ex:flamethrower ;
-                    sp:predicate ukeaq:hasStatus ;
-                    sp:object "done"
-                ])
-            ]
-        ])
+        htn:hasTaskList (
+            :root_task
+        )
     ] ;
     htn:hasOutputWorkflowBehaviourRoot <wfm-behaviour#root> .
 
@@ -67,313 +60,235 @@
 #
 
 :2arm0-place-iron-ore-on-belt0_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :2arm0-place-iron-ore-on-belt0_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :2arm0-place-iron-ore-on-belt0_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :wait_task :2arm0-wait_task :2arm0-grip-iron-ore_task :2arm0-move-to-1-0-0_task :2arm0-wait2_task :2arm0-drop-iron-ore-on-belt0_task :2arm0-move-to--1-0-0_task ) ] .
 
 :2arm1-place-iron-plate-into-storage1_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :2arm1-place-iron-plate-into-storage1_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :2arm1-place-iron-plate-into-storage1_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :2arm1-wait_task :2arm1-grip-iron-plate_task :2arm1-move-to-1-0-0_task :2arm1-wait2_task :2arm1-drop-iron-plate-on-belt1_task :2arm1-move-to--1-0-0_task ) ] .
 
 :2belt0-transport-iron-ore-to-machine0_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :2belt0-transport-iron-ore-to-machine0_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :2belt0-transport-iron-ore-to-machine0_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :2belt0-wait_task :2belt0-on_task ) ] .
 
 :2belt1-transport-iron-plate-to-arm1_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :2belt1-transport-iron-plate-to-arm1_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :2belt1-transport-iron-plate-to-arm1_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :2belt1-wait_task :2belt1-on_task ) ] .
 
 :2machine0-process-iron-ore_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :2machine0-process-iron-ore_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :2machine0-process-iron-ore_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :2machine0-wait_task :2machine0-on_task ) ] .
 
 :arm0-place-iron-ore-on-belt0_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :arm0-place-iron-ore-on-belt0_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :arm0-place-iron-ore-on-belt0_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :arm0-wait_task :arm0-grip-iron-ore_task :arm0-move-to-1-0-0_task :arm0-wait2_task :arm0-drop-iron-ore-on-belt0_task :arm0-move-to--1-0-0_task ) ] .
 
 :arm1-place-iron-plate-into-storage1_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :arm1-place-iron-plate-into-storage1_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :arm1-place-iron-plate-into-storage1_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :arm1-wait_task :arm1-grip-iron-plate_task :arm1-move-to-1-0-0_task :arm1-wait2_task :arm1-drop-iron-plate-on-belt1_task :arm1-move-to--1-0-0_task ) ] .
 
 :arm2-place-iron-plate-on-belt2_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :arm2-place-iron-plate-on-belt2_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :arm2-place-iron-plate-on-belt2_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :arm2-wait_task :arm2-grip-iron-plate_task :arm2-move-to-1-0-0_task :arm2-wait2_task :arm2-drop-iron-plate-on-belt2_task :arm2-move-to--1-0-0_task ) ] .
 
 :arm3-place-iron-plate-on-belt3_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :arm3-place-iron-plate-on-belt3_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :arm3-place-iron-plate-on-belt3_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :arm3-wait_task :arm3-grip-iron-plate_task :arm3-move-to-1-0-0_task :arm3-wait2_task :arm3-drop-iron-plate-on-belt3_task :arm3-move-to--1-0-0_task ) ] .
 
 :arm4-place-steel-plate-into-storage2_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :arm4-place-steel-plate-into-storage2_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :arm4-place-steel-plate-into-storage2_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :arm4-wait_task :arm4-grip-steel-plate_task :arm4-move-to-1-0-0_task :arm4-wait2_task :arm4-drop-steel-plate-on-belt4_task :arm4-move-to--1-0-0_task ) ] .
 
 :arm5-place-steel-plate-on-belt5_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :arm5-place-steel-plate-on-belt5_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :arm5-place-steel-plate-on-belt5_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :arm5-wait_task :arm5-grip-steel-plate_task :arm5-move-to-1-0-0_task :arm5-wait2_task :arm5-drop-steel-plate-on-belt5_task :arm5-move-to--1-0-0_task ) ] .
 
 :arm6-place-iron-gearwheel-into-storage3_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :arm6-place-iron-gearwheel-into-storage3_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :arm6-place-iron-gearwheel-into-storage3_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :arm6-wait_task :arm6-grip-iron-gearwheel_task :arm6-move-to-1-0-0_task :arm6-wait2_task :arm6-drop-iron-gearwheel-on-belt6_task :arm6-move-to--1-0-0_task ) ] .
 
 :arm7-place-iron-gearwheel-on-belt7_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :arm7-place-iron-gearwheel-on-belt7_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :arm7-place-iron-gearwheel-on-belt7_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :arm7-wait_task :arm7-grip-iron-gearwheel_task :arm7-move-to-1-0-0_task :arm7-wait2_task :arm7-drop-iron-gearwheel-on-belt7_task :arm7-move-to--1-0-0_task ) ] .
 
 :arm8-place-flamethrower-into-storage4_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :arm8-place-flamethrower-into-storage4_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :arm8-place-flamethrower-into-storage4_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :arm8-wait_task :arm8-grip-flamethrower_task :arm8-move-to-1-0-0_task :arm8-wait2_task :arm8-drop-flamethrower-on-belt8_task :arm8-move-to--1-0-0_task ) ] .
 
 :belt0-transport-iron-ore-to-machine0_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :belt0-transport-iron-ore-to-machine0_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :belt0-transport-iron-ore-to-machine0_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :belt0-wait_task :belt0-on_task ) ] .
 
 :belt1-transport-iron-plate-to-arm1_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :belt1-transport-iron-plate-to-arm1_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :belt1-transport-iron-plate-to-arm1_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :belt1-wait_task :belt1-on_task ) ] .
 
 :belt2-transport-iron-plate-to-machine1_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :belt2-transport-iron-plate-to-machine1_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :belt2-transport-iron-plate-to-machine1_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :belt2-wait_task :belt2-on_task ) ] .
 
 :belt3-transport-iron-plate-to-machine2_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :belt3-transport-iron-plate-to-machine2_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :belt3-transport-iron-plate-to-machine2_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :belt3-wait_task :belt3-on_task ) ] .
 
 :belt4-transport-steel-plate-to-arm4_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :belt4-transport-steel-plate-to-arm4_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :belt4-transport-steel-plate-to-arm4_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :belt4-wait_task :belt4-on_task ) ] .
 
 :belt5-transport-steel-plate-to-machine3_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :belt5-transport-steel-plate-to-machine3_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :belt5-transport-steel-plate-to-machine3_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :belt5-wait_task :belt5-on_task ) ] .
 
 :belt6-transport-iron-gearwheel-to-arm6_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :belt6-transport-iron-gearwheel-to-arm6_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :belt6-transport-iron-gearwheel-to-arm6_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :belt6-wait_task :belt6-on_task ) ] .
 
 :belt7-transport-iron-gearwheel-to-machine3_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :belt7-transport-iron-gearwheel-to-machine3_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :belt7-transport-iron-gearwheel-to-machine3_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :belt7-wait_task :belt7-on_task ) ] .
 
 :belt8-transport-flamethrower-to-arm8_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :belt8-transport-flamethrower-to-arm8_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :belt8-transport-flamethrower-to-arm8_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :belt8-wait_task :belt8-on_task ) ] .
 
 :flamethrower-input-material-production_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :flamethrower-input-material-production_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :flamethrower-input-material-production_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint false ;
             htn:hasTaskList ( :steel-plate-assembly_task :iron-gearwheel-assembly_task ) ] .
 
 :flamethrower-production_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :flamethrower-production_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :flamethrower-production_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :input-transport_task :machine3-process-input_task :belt8-transport-flamethrower-to-arm8_task :arm8-place-flamethrower-into-storage4_task ) ] .
 
 :input-transport_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :input-transport_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :input-transport_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint false ;
             htn:hasTaskList ( :steel-plate-transport_task :iron-gearwheel-transport_task ) ] .
 
 :iron-gearwheel-assembly_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :iron-gearwheel-assembly_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :iron-gearwheel-assembly_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :iron-plate-production2_task :iron-gearwheel-production_task ) ] .
 
 :iron-gearwheel-production_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :iron-gearwheel-production_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :iron-gearwheel-production_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :arm3-place-iron-plate-on-belt3_task :belt3-transport-iron-plate-to-machine2_task :machine2-process-iron-plate_task :belt6-transport-iron-gearwheel-to-arm6_task :arm6-place-iron-gearwheel-into-storage3_task ) ] .
 
 :iron-gearwheel-transport_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :iron-gearwheel-transport_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :iron-gearwheel-transport_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :arm7-place-iron-gearwheel-on-belt7_task :belt7-transport-iron-gearwheel-to-machine3_task ) ] .
 
 :iron-plate-production2_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :iron-plate-production2_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :iron-plate-production2_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :2arm0-place-iron-ore-on-belt0_task :2belt0-transport-iron-ore-to-machine0_task :2machine0-process-iron-ore_task :2belt1-transport-iron-plate-to-arm1_task :2arm1-place-iron-plate-into-storage1_task ) ] .
 
 :iron-plate-production_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :iron-plate-production_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :iron-plate-production_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :arm0-place-iron-ore-on-belt0_task :belt0-transport-iron-ore-to-machine0_task :machine0-process-iron-ore_task :belt1-transport-iron-plate-to-arm1_task :arm1-place-iron-plate-into-storage1_task ) ] .
 
 :machine0-process-iron-ore_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :machine0-process-iron-ore_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :machine0-process-iron-ore_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :machine0-wait_task :machine0-on_task ) ] .
 
 :machine1-process-iron-plate_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :machine1-process-iron-plate_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :machine1-process-iron-plate_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :machine1-wait_task :machine1-on_task ) ] .
 
 :machine2-process-iron-plate_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :machine2-process-iron-plate_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :machine2-process-iron-plate_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :machine2-wait_task :machine2-on_task ) ] .
 
 :machine3-process-input_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :machine3-process-input_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :machine3-process-input_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :machine3-wait_task :machine3-on_task ) ] .
 
 :root_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :root_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :root_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :flamethrower-input-material-production_task :flamethrower-production_task ) ] .
 
 :steel-plate-assembly_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :steel-plate-assembly_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :steel-plate-assembly_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :iron-plate-production_task :steel-plate-production_task ) ] .
 
 :steel-plate-production_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :steel-plate-production_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :steel-plate-production_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :arm2-place-iron-plate-on-belt2_task :belt2-transport-iron-plate-to-machine1_task :machine1-process-iron-plate_task :belt4-transport-steel-plate-to-arm4_task :arm4-place-steel-plate-into-storage2_task ) ] .
 
 :steel-plate-transport_method a htn:Method ;
-    htn:forNonPrimitiveTask [ htn:hasLiteral [ sp:where ( [ sp:object true ;
-                                sp:predicate ex:done ;
-                                sp:subject :steel-plate-transport_method ] ) ] ] ;
+    htn:forNonPrimitiveTask [ htn:hasLiteral :steel-plate-transport_literal ] ;
     htn:hasPrecondition :doesntMatter ;
     htn:hasTaskNetwork [ htn:hasOrderingConstraint true ;
             htn:hasTaskList ( :arm5-place-steel-plate-on-belt5_task :belt5-transport-steel-plate-to-machine3_task ) ] .
@@ -388,199 +303,121 @@
 #
 
 :2arm0-place-iron-ore-on-belt0_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :2arm0-place-iron-ore-on-belt0_task ] ) ] .
+    htn:hasLiteral :2arm0-place-iron-ore-on-belt0_literal .
 
 :2arm1-place-iron-plate-into-storage1_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :2arm1-place-iron-plate-into-storage1_task ] ) ] .
+    htn:hasLiteral :2arm1-place-iron-plate-into-storage1_literal .
 
 :2belt0-transport-iron-ore-to-machine0_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :2belt0-transport-iron-ore-to-machine0_task ] ) ] .
+    htn:hasLiteral :2belt0-transport-iron-ore-to-machine0_literal .
 
 :2belt1-transport-iron-plate-to-arm1_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :2belt1-transport-iron-plate-to-arm1_task ] ) ] .
+    htn:hasLiteral :2belt1-transport-iron-plate-to-arm1_literal .
 
 :2machine0-process-iron-ore_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :2machine0-process-iron-ore_task ] ) ] .
+    htn:hasLiteral :2machine0-process-iron-ore_literal .
 
 :arm0-place-iron-ore-on-belt0_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :arm0-place-iron-ore-on-belt0_task ] ) ] .
+    htn:hasLiteral :arm0-place-iron-ore-on-belt0_literal .
 
 :arm1-place-iron-plate-into-storage1_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :arm1-place-iron-plate-into-storage1_task ] ) ] .
+    htn:hasLiteral :arm1-place-iron-plate-into-storage1_literal .
 
 :arm2-place-iron-plate-on-belt2_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :arm2-place-iron-plate-on-belt2_task ] ) ] .
+    htn:hasLiteral :arm2-place-iron-plate-on-belt2_literal .
 
 :arm3-place-iron-plate-on-belt3_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :arm3-place-iron-plate-on-belt3_task ] ) ] .
+    htn:hasLiteral :arm3-place-iron-plate-on-belt3_literal .
 
 :arm4-place-steel-plate-into-storage2_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :arm4-place-steel-plate-into-storage2_task ] ) ] .
+    htn:hasLiteral :arm4-place-steel-plate-into-storage2_literal .
 
 :arm5-place-steel-plate-on-belt5_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :arm5-place-steel-plate-on-belt5_task ] ) ] .
+    htn:hasLiteral :arm5-place-steel-plate-on-belt5_literal .
 
 :arm6-place-iron-gearwheel-into-storage3_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :arm6-place-iron-gearwheel-into-storage3_task ] ) ] .
+    htn:hasLiteral :arm6-place-iron-gearwheel-into-storage3_literal .
 
 :arm7-place-iron-gearwheel-on-belt7_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :arm7-place-iron-gearwheel-on-belt7_task ] ) ] .
+    htn:hasLiteral :arm7-place-iron-gearwheel-on-belt7_literal .
 
 :arm8-place-flamethrower-into-storage4_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :arm8-place-flamethrower-into-storage4_task ] ) ] .
+    htn:hasLiteral :arm8-place-flamethrower-into-storage4_literal .
 
 :belt0-transport-iron-ore-to-machine0_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :belt0-transport-iron-ore-to-machine0_task ] ) ] .
+    htn:hasLiteral :belt0-transport-iron-ore-to-machine0_literal .
 
 :belt1-transport-iron-plate-to-arm1_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :belt1-transport-iron-plate-to-arm1_task ] ) ] .
+    htn:hasLiteral :belt1-transport-iron-plate-to-arm1_literal .
 
 :belt2-transport-iron-plate-to-machine1_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :belt2-transport-iron-plate-to-machine1_task ] ) ] .
+    htn:hasLiteral :belt2-transport-iron-plate-to-machine1_literal .
 
 :belt3-transport-iron-plate-to-machine2_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :belt3-transport-iron-plate-to-machine2_task ] ) ] .
+    htn:hasLiteral :belt3-transport-iron-plate-to-machine2_literal .
 
 :belt4-transport-steel-plate-to-arm4_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :belt4-transport-steel-plate-to-arm4_task ] ) ] .
+    htn:hasLiteral :belt4-transport-steel-plate-to-arm4_literal .
 
 :belt5-transport-steel-plate-to-machine3_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :belt5-transport-steel-plate-to-machine3_task ] ) ] .
+    htn:hasLiteral :belt5-transport-steel-plate-to-machine3_literal .
 
 :belt6-transport-iron-gearwheel-to-arm6_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :belt6-transport-iron-gearwheel-to-arm6_task ] ) ] .
+    htn:hasLiteral :belt6-transport-iron-gearwheel-to-arm6_literal .
 
 :belt7-transport-iron-gearwheel-to-machine3_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :belt7-transport-iron-gearwheel-to-machine3_task ] ) ] .
+    htn:hasLiteral :belt7-transport-iron-gearwheel-to-machine3_literal .
 
 :belt8-transport-flamethrower-to-arm8_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :belt8-transport-flamethrower-to-arm8_task ] ) ] .
+    htn:hasLiteral :belt8-transport-flamethrower-to-arm8_literal .
 
 :flamethrower-input-material-production_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :flamethrower-input-material-production_task ] ) ] .
+    htn:hasLiteral :flamethrower-input-material-production_literal .
 
 :flamethrower-production_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :flamethrower-production_task ] ) ] .
+    htn:hasLiteral :flamethrower-production_literal .
 
 :input-transport_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :input-transport_task ] ) ] .
+    htn:hasLiteral :input-transport_literal .
 
 :iron-gearwheel-assembly_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :iron-gearwheel-assembly_task ] ) ] .
+    htn:hasLiteral :iron-gearwheel-assembly_literal .
 
 :iron-gearwheel-production_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :iron-gearwheel-production_task ] ) ] .
+    htn:hasLiteral :iron-gearwheel-production_literal .
 
 :iron-gearwheel-transport_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :iron-gearwheel-transport_task ] ) ] .
+    htn:hasLiteral :iron-gearwheel-transport_literal .
 
 :iron-plate-production2_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :iron-plate-production2_task ] ) ] .
+    htn:hasLiteral :iron-plate-production2_literal .
 
 :iron-plate-production_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :iron-plate-production_task ] ) ] .
+    htn:hasLiteral :iron-plate-production_literal .
 
 :machine0-process-iron-ore_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :machine0-process-iron-ore_task ] ) ] .
+    htn:hasLiteral :machine0-process-iron-ore_literal .
 
 :machine1-process-iron-plate_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :machine1-process-iron-plate_task ] ) ] .
+    htn:hasLiteral :machine1-process-iron-plate_literal .
 
 :machine2-process-iron-plate_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :machine2-process-iron-plate_task ] ) ] .
+    htn:hasLiteral :machine2-process-iron-plate_literal .
 
 :machine3-process-input_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :machine3-process-input_task ] ) ] .
+    htn:hasLiteral :machine3-process-input_literal .
 
 :root_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :root_task ] ) ] .
+    htn:hasLiteral :root_literal .
 
 :steel-plate-assembly_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :steel-plate-assembly_task ] ) ] .
+    htn:hasLiteral :steel-plate-assembly_literal .
 
 :steel-plate-production_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :steel-plate-production_task ] ) ] .
+    htn:hasLiteral :steel-plate-production_literal .
 
 :steel-plate-transport_task a htn:GoalTask ;
-    htn:hasLiteral [ sp:where ( [ sp:object true ;
-                        sp:predicate ex:done ;
-                        sp:subject :steel-plate-transport_task ] ) ] .
+    htn:hasLiteral :steel-plate-transport_literal .
 
 #
 #   > Primitive Tasks
