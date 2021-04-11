@@ -18,6 +18,14 @@
 #   Conditions
 #
 
+:doesnt-matter a sp:Ask ;
+  sp:where (
+	[ sp:subject <http://localhost:8080/arm/0/state#state>;
+      sp:predicate ukeaq:hasCapacity ;
+      sp:object ukeaq:empty
+    ]
+  ) .
+
 :2arm0-at-1-0-0 a sp:Ask ;
     sp:where ( [ sp:object ukeaq:down_right ;
                 sp:predicate ukeaq:hasStatus ;

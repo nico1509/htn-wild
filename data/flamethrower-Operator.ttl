@@ -26,6 +26,11 @@
 #   Operators
 #
 
+:waiter
+    a htn:PlanningOperator ;
+    htn:hasPrimitiveTask
+        :wait_task .
+
 :2arm0
     a htn:PlanningOperator ;
     htn:hasPrimitiveTask
@@ -237,6 +242,15 @@
 #   Primitive Tasks
 #
 
+:wait_task
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:GET ;
+        http:requestURI <http://localhost:8080/> ;
+        http:body ""
+    ] ;
+    htn:hasPostcondition conditions:doesnt-matter .
+
 :2arm0-drop-iron-ore-on-belt0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
             http:mthd http_m:POST ;
@@ -262,9 +276,15 @@
     htn:hasPostcondition conditions:2arm0-at-1-0-0 .
 
 :2arm0-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:2arm0-free-to-drop .
 
 :2arm0-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:2arm0-free-to-grip .
 
 :2arm1-drop-iron-plate-on-belt1_task a htn:PrimitiveTask ;
@@ -292,9 +312,15 @@
     htn:hasPostcondition conditions:2arm1-at-1-0-0 .
 
 :2arm1-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:2arm1-free-to-drop .
 
 :2arm1-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:2arm1-free-to-grip .
 
 :2belt0-on_task a htn:PrimitiveTask ;
@@ -304,6 +330,9 @@
     htn:hasPostcondition conditions:2belt0-notfree-to-transport .
 
 :2belt0-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:2belt0-free-to-transport .
 
 :2belt1-on_task a htn:PrimitiveTask ;
@@ -313,6 +342,9 @@
     htn:hasPostcondition conditions:2belt1-notfree-to-transport .
 
 :2belt1-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:2belt1-free-to-transport .
 
 :2machine0-on_task a htn:PrimitiveTask ;
@@ -322,6 +354,9 @@
     htn:hasPostcondition conditions:2machine0-sensorout-full .
 
 :2machine0-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:2machine0-free-to-process .
 
 :arm0-drop-iron-ore-on-belt0_task a htn:PrimitiveTask ;
@@ -349,9 +384,15 @@
     htn:hasPostcondition conditions:arm0-at-1-0-0 .
 
 :arm0-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:arm0-free-to-drop .
 
 :arm0-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:arm0-free-to-grip .
 
 :arm1-drop-iron-plate-on-belt1_task a htn:PrimitiveTask ;
@@ -379,9 +420,15 @@
     htn:hasPostcondition conditions:arm1-at-1-0-0 .
 
 :arm1-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:arm1-free-to-drop .
 
 :arm1-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:arm1-free-to-grip .
 
 :arm2-drop-iron-plate-on-belt2_task a htn:PrimitiveTask ;
@@ -409,9 +456,15 @@
     htn:hasPostcondition conditions:arm2-at-1-0-0 .
 
 :arm2-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:arm2-free-to-drop .
 
 :arm2-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:arm2-free-to-grip .
 
 :arm3-drop-iron-plate-on-belt3_task a htn:PrimitiveTask ;
@@ -439,9 +492,15 @@
     htn:hasPostcondition conditions:arm3-at-1-0-0 .
 
 :arm3-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:arm3-free-to-drop .
 
 :arm3-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:arm3-free-to-grip .
 
 :arm4-drop-steel-plate-on-belt4_task a htn:PrimitiveTask ;
@@ -469,9 +528,15 @@
     htn:hasPostcondition conditions:arm4-at-1-0-0 .
 
 :arm4-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:arm4-free-to-drop .
 
 :arm4-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:arm4-free-to-grip .
 
 :arm5-drop-steel-plate-on-belt5_task a htn:PrimitiveTask ;
@@ -499,9 +564,15 @@
     htn:hasPostcondition conditions:arm5-at-1-0-0 .
 
 :arm5-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:arm5-free-to-drop .
 
 :arm5-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:arm5-free-to-grip .
 
 :arm6-drop-iron-gearwheel-on-belt6_task a htn:PrimitiveTask ;
@@ -529,9 +600,15 @@
     htn:hasPostcondition conditions:arm6-at-1-0-0 .
 
 :arm6-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:arm6-free-to-drop .
 
 :arm6-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:arm6-free-to-grip .
 
 :arm7-drop-iron-gearwheel-on-belt7_task a htn:PrimitiveTask ;
@@ -559,9 +636,15 @@
     htn:hasPostcondition conditions:arm7-at-1-0-0 .
 
 :arm7-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:arm7-free-to-drop .
 
 :arm7-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:arm7-free-to-grip .
 
 :arm8-drop-flamethrower-on-belt8_task a htn:PrimitiveTask ;
@@ -589,9 +672,15 @@
     htn:hasPostcondition conditions:arm8-at-1-0-0 .
 
 :arm8-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:arm8-free-to-drop .
 
 :arm8-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:arm8-free-to-grip .
 
 :belt0-on_task a htn:PrimitiveTask ;
@@ -601,6 +690,9 @@
     htn:hasPostcondition conditions:belt0-notfree-to-transport .
 
 :belt0-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:belt0-free-to-transport .
 
 :belt1-on_task a htn:PrimitiveTask ;
@@ -610,6 +702,9 @@
     htn:hasPostcondition conditions:belt1-notfree-to-transport .
 
 :belt1-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:belt1-free-to-transport .
 
 :belt2-on_task a htn:PrimitiveTask ;
@@ -619,6 +714,9 @@
     htn:hasPostcondition conditions:belt2-notfree-to-transport .
 
 :belt2-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:belt2-free-to-transport .
 
 :belt3-on_task a htn:PrimitiveTask ;
@@ -628,6 +726,9 @@
     htn:hasPostcondition conditions:belt3-notfree-to-transport .
 
 :belt3-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:belt3-free-to-transport .
 
 :belt4-on_task a htn:PrimitiveTask ;
@@ -637,6 +738,9 @@
     htn:hasPostcondition conditions:belt4-notfree-to-transport .
 
 :belt4-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:belt4-free-to-transport .
 
 :belt5-on_task a htn:PrimitiveTask ;
@@ -646,6 +750,9 @@
     htn:hasPostcondition conditions:belt5-notfree-to-transport .
 
 :belt5-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:belt5-free-to-transport .
 
 :belt6-on_task a htn:PrimitiveTask ;
@@ -655,6 +762,9 @@
     htn:hasPostcondition conditions:belt6-notfree-to-transport .
 
 :belt6-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:belt6-free-to-transport .
 
 :belt7-on_task a htn:PrimitiveTask ;
@@ -664,6 +774,9 @@
     htn:hasPostcondition conditions:belt7-notfree-to-transport .
 
 :belt7-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:belt7-free-to-transport .
 
 :belt8-on_task a htn:PrimitiveTask ;
@@ -673,6 +786,9 @@
     htn:hasPostcondition conditions:belt8-notfree-to-transport .
 
 :belt8-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:belt8-free-to-transport .
 
 :machine0-on_task a htn:PrimitiveTask ;
@@ -682,6 +798,9 @@
     htn:hasPostcondition conditions:machine0-sensorout-full .
 
 :machine0-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:machine0-free-to-process .
 
 :machine1-on_task a htn:PrimitiveTask ;
@@ -691,6 +810,9 @@
     htn:hasPostcondition conditions:machine1-sensorout-full .
 
 :machine1-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:machine1-free-to-process .
 
 :machine2-on_task a htn:PrimitiveTask ;
@@ -700,6 +822,9 @@
     htn:hasPostcondition conditions:machine2-sensorout-full .
 
 :machine2-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:machine2-free-to-process .
 
 :machine3-on_task a htn:PrimitiveTask ;
@@ -709,4 +834,7 @@
     htn:hasPostcondition conditions:machine3-sensorout-full .
 
 :machine3-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ;
+            http:requestURI <http://localhost:8080/> ] ;
     htn:hasPostcondition conditions:machine3-free-to-process .

@@ -423,381 +423,404 @@
 #   > Primitive Tasks
 #
 
+:wait_task
+    a htn:PrimitiveTask ;
+    htn:hasHttpRequest [
+        http:mthd http_m:GET ;
+        http:body ""
+    ] .
+
 :2arm0-drop-iron-ore-on-belt0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/0/action> ] .
+            http:mthd http_m:POST ] .
 
 :2arm0-grip-iron-ore_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/0/action> ] .
+            http:mthd http_m:POST ] .
 
 :2arm0-move-to--1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/0/action> ] .
+            http:mthd http_m:POST ] .
 
 :2arm0-move-to-1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/0/action> ] .
+            http:mthd http_m:POST ] .
 
-:2arm0-wait2_task a htn:PrimitiveTask .
+:2arm0-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
-:2arm0-wait_task a htn:PrimitiveTask .
+:2arm0-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :2arm1-drop-iron-plate-on-belt1_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/1/action> ] .
+            http:mthd http_m:POST ] .
 
 :2arm1-grip-iron-plate_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/1/action> ] .
+            http:mthd http_m:POST ] .
 
 :2arm1-move-to--1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/1/action> ] .
+            http:mthd http_m:POST ] .
 
 :2arm1-move-to-1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/1/action> ] .
+            http:mthd http_m:POST ] .
 
-:2arm1-wait2_task a htn:PrimitiveTask .
+:2arm1-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
-:2arm1-wait_task a htn:PrimitiveTask .
+:2arm1-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :2belt0-on_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/belt/0/action> ] .
+            http:mthd http_m:POST ] .
 
-:2belt0-wait_task a htn:PrimitiveTask .
+:2belt0-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :2belt1-on_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/belt/1/action> ] .
+            http:mthd http_m:POST ] .
 
-:2belt1-wait_task a htn:PrimitiveTask .
+:2belt1-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :2machine0-on_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/machine/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/machine/0/action> ] .
+            http:mthd http_m:POST ] .
 
-:2machine0-wait_task a htn:PrimitiveTask .
+:2machine0-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :arm0-drop-iron-ore-on-belt0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/0/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm0-grip-iron-ore_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/0/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm0-move-to--1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/0/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm0-move-to-1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/0/action> ] .
+            http:mthd http_m:POST ] .
 
-:arm0-wait2_task a htn:PrimitiveTask .
+:arm0-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
-:arm0-wait_task a htn:PrimitiveTask .
+:arm0-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :arm1-drop-iron-plate-on-belt1_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/1/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm1-grip-iron-plate_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/1/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm1-move-to--1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/1/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm1-move-to-1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/1/action> ] .
+            http:mthd http_m:POST ] .
 
-:arm1-wait2_task a htn:PrimitiveTask .
+:arm1-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
-:arm1-wait_task a htn:PrimitiveTask .
+:arm1-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :arm2-drop-iron-plate-on-belt2_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/2/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/2/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm2-grip-iron-plate_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/2/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/2/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm2-move-to--1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/2/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/2/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm2-move-to-1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/2/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/2/action> ] .
+            http:mthd http_m:POST ] .
 
-:arm2-wait2_task a htn:PrimitiveTask .
+:arm2-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
-:arm2-wait_task a htn:PrimitiveTask .
+:arm2-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :arm3-drop-iron-plate-on-belt3_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/3/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/3/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm3-grip-iron-plate_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/3/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/3/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm3-move-to--1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/3/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/3/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm3-move-to-1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/3/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/3/action> ] .
+            http:mthd http_m:POST ] .
 
-:arm3-wait2_task a htn:PrimitiveTask .
+:arm3-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
-:arm3-wait_task a htn:PrimitiveTask .
+:arm3-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :arm4-drop-steel-plate-on-belt4_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/4/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/4/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm4-grip-steel-plate_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/4/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/4/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm4-move-to--1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/4/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/4/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm4-move-to-1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/4/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/4/action> ] .
+            http:mthd http_m:POST ] .
 
-:arm4-wait2_task a htn:PrimitiveTask .
+:arm4-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
-:arm4-wait_task a htn:PrimitiveTask .
+:arm4-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :arm5-drop-steel-plate-on-belt5_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/5/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/5/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm5-grip-steel-plate_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/5/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/5/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm5-move-to--1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/5/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/5/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm5-move-to-1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/5/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/5/action> ] .
+            http:mthd http_m:POST ] .
 
-:arm5-wait2_task a htn:PrimitiveTask .
+:arm5-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
-:arm5-wait_task a htn:PrimitiveTask .
+:arm5-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :arm6-drop-iron-gearwheel-on-belt6_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/6/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/6/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm6-grip-iron-gearwheel_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/6/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/6/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm6-move-to--1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/6/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/6/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm6-move-to-1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/6/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/6/action> ] .
+            http:mthd http_m:POST ] .
 
-:arm6-wait2_task a htn:PrimitiveTask .
+:arm6-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
-:arm6-wait_task a htn:PrimitiveTask .
+:arm6-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :arm7-drop-iron-gearwheel-on-belt7_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/7/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/7/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm7-grip-iron-gearwheel_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/7/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/7/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm7-move-to--1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/7/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/7/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm7-move-to-1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/7/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/7/action> ] .
+            http:mthd http_m:POST ] .
 
-:arm7-wait2_task a htn:PrimitiveTask .
+:arm7-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
-:arm7-wait_task a htn:PrimitiveTask .
+:arm7-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :arm8-drop-flamethrower-on-belt8_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/8/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#drop\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/8/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm8-grip-flamethrower_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/8/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#grip\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/8/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm8-move-to--1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/8/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_right\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/8/action> ] .
+            http:mthd http_m:POST ] .
 
 :arm8-move-to-1-0-0_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/arm/8/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#up_left\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/arm/8/action> ] .
+            http:mthd http_m:POST ] .
 
-:arm8-wait2_task a htn:PrimitiveTask .
+:arm8-wait2_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
-:arm8-wait_task a htn:PrimitiveTask .
+:arm8-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :belt0-on_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/belt/0/action> ] .
+            http:mthd http_m:POST ] .
 
-:belt0-wait_task a htn:PrimitiveTask .
+:belt0-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :belt1-on_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/belt/1/action> ] .
+            http:mthd http_m:POST ] .
 
-:belt1-wait_task a htn:PrimitiveTask .
+:belt1-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :belt2-on_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/2/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/belt/2/action> ] .
+            http:mthd http_m:POST ] .
 
-:belt2-wait_task a htn:PrimitiveTask .
+:belt2-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :belt3-on_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/3/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/belt/3/action> ] .
+            http:mthd http_m:POST ] .
 
-:belt3-wait_task a htn:PrimitiveTask .
+:belt3-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :belt4-on_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/4/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/belt/4/action> ] .
+            http:mthd http_m:POST ] .
 
-:belt4-wait_task a htn:PrimitiveTask .
+:belt4-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :belt5-on_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/5/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/belt/5/action> ] .
+            http:mthd http_m:POST ] .
 
-:belt5-wait_task a htn:PrimitiveTask .
+:belt5-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :belt6-on_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/6/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/belt/6/action> ] .
+            http:mthd http_m:POST ] .
 
-:belt6-wait_task a htn:PrimitiveTask .
+:belt6-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :belt7-on_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/7/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/belt/7/action> ] .
+            http:mthd http_m:POST ] .
 
-:belt7-wait_task a htn:PrimitiveTask .
+:belt7-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :belt8-on_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/belt/8/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/belt/8/action> ] .
+            http:mthd http_m:POST ] .
 
-:belt8-wait_task a htn:PrimitiveTask .
+:belt8-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :machine0-on_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/machine/0/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/machine/0/action> ] .
+            http:mthd http_m:POST ] .
 
-:machine0-wait_task a htn:PrimitiveTask .
+:machine0-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :machine1-on_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/machine/1/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/machine/1/action> ] .
+            http:mthd http_m:POST ] .
 
-:machine1-wait_task a htn:PrimitiveTask .
+:machine1-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :machine2-on_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/machine/2/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/machine/2/action> ] .
+            http:mthd http_m:POST ] .
 
-:machine2-wait_task a htn:PrimitiveTask .
+:machine2-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 :machine3-on_task a htn:PrimitiveTask ;
     htn:hasHttpRequest [ http:body "<?xml version=\"1.0\" encoding=\"utf-8\"?><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">  <rdf:Description rdf:about=\"http://localhost:8080/machine/3/action\">    <ns0:invokeAction xmlns:ns0=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#\" rdf:resource=\"http://www.student.kit.edu/~ukeaq/uni/voc.ttl#on\"/>  </rdf:Description></rdf:RDF>" ;
-            http:mthd http_m:POST ;
-            http:requestURI <http://localhost:8080/machine/3/action> ] .
+            http:mthd http_m:POST ] .
 
-:machine3-wait_task a htn:PrimitiveTask .
+:machine3-wait_task a htn:PrimitiveTask ;
+    htn:hasHttpRequest [ http:body "" ;
+            http:mthd http_m:GET ] .
 
 
 #
