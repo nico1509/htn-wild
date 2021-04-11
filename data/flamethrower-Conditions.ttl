@@ -1,0 +1,732 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix http: <http://www.w3.org/2011/http#> .
+@prefix http_m: <http://www.w3.org/2011/http-methods#> .
+
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix sparql-result: <http://www.w3.org/2005/sparql-results#> .
+
+@prefix htn: <http://purl.org/uberq/htn/vocab#> .
+
+@prefix : <#> .
+
+
+#
+#   Conditions
+#
+
+:2arm0-at-1-0-0 a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_right ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/0/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/0/action#action> ] ) .
+
+:2arm0-empty a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/0/state#state> ] ) .
+
+:2arm0-free a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/0/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/0/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/0/action#action> ] ) .
+
+:2arm0-free-to-drop a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/arm/0/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/belt/0/action#action> ] ) .
+
+:2arm0-free-to-grip a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/0/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/0/state#state> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/arm/0/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/0/action#action> ] ) .
+
+:2arm0-full a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/0/state#state> ] ) .
+
+:2arm1-at-1-0-0 a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_right ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/1/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/1/action#action> ] ) .
+
+:2arm1-empty a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/1/state#state> ] ) .
+
+:2arm1-free a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/1/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/1/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/1/action#action> ] ) .
+
+:2arm1-free-to-drop a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/arm/1/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/storage/1/action#action> ] ) .
+
+:2arm1-free-to-grip a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/1/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/1/state#state> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/arm/1/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/1/action#action> ] ) .
+
+:2arm1-full a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/1/state#state> ] ) .
+
+:2belt0-free-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/belt/0/action#action> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/belt/0/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/0/state#state> ] ) .
+
+:2belt0-notfree-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/0/state#state> ] ) .
+
+:2belt1-free-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/belt/1/action#action> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/belt/1/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/1/state#state> ] ) .
+
+:2belt1-notfree-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/1/state#state> ] ) .
+
+:2machine0-free-to-process a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/machine/0/action#action> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/machine/0/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/machine/0/state#state> ] ) .
+
+:2machine0-sensorout-full a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/machine/0/state#state> ] ) .
+
+:arm0-at-1-0-0 a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_right ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/0/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/0/action#action> ] ) .
+
+:arm0-empty a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/0/state#state> ] ) .
+
+:arm0-free a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/0/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/0/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/0/action#action> ] ) .
+
+:arm0-free-to-drop a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/arm/0/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/belt/0/action#action> ] ) .
+
+:arm0-free-to-grip a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/0/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/0/state#state> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/arm/0/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/0/action#action> ] ) .
+
+:arm0-full a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/0/state#state> ] ) .
+
+:arm1-at-1-0-0 a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_right ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/1/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/1/action#action> ] ) .
+
+:arm1-empty a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/1/state#state> ] ) .
+
+:arm1-free a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/1/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/1/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/1/action#action> ] ) .
+
+:arm1-free-to-drop a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/arm/1/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/storage/1/action#action> ] ) .
+
+:arm1-free-to-grip a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/1/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/1/state#state> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/arm/1/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/1/action#action> ] ) .
+
+:arm1-full a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/1/state#state> ] ) .
+
+:arm2-at-1-0-0 a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_right ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/2/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/2/action#action> ] ) .
+
+:arm2-empty a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/2/state#state> ] ) .
+
+:arm2-free a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/2/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/2/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/2/action#action> ] ) .
+
+:arm2-free-to-drop a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/arm/2/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/belt/2/action#action> ] ) .
+
+:arm2-free-to-grip a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/2/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/2/state#state> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/arm/2/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/2/action#action> ] ) .
+
+:arm2-full a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/2/state#state> ] ) .
+
+:arm3-at-1-0-0 a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_right ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/3/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/3/action#action> ] ) .
+
+:arm3-empty a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/3/state#state> ] ) .
+
+:arm3-free a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/3/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/3/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/3/action#action> ] ) .
+
+:arm3-free-to-drop a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/arm/3/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/belt/3/action#action> ] ) .
+
+:arm3-free-to-grip a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/3/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/3/state#state> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/arm/3/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/3/action#action> ] ) .
+
+:arm3-full a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/3/state#state> ] ) .
+
+:arm4-at-1-0-0 a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_right ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/4/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/4/action#action> ] ) .
+
+:arm4-empty a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/4/state#state> ] ) .
+
+:arm4-free a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/4/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/4/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/4/action#action> ] ) .
+
+:arm4-free-to-drop a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/arm/4/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/storage/2/action#action> ] ) .
+
+:arm4-free-to-grip a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/4/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/4/state#state> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/arm/4/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/4/action#action> ] ) .
+
+:arm4-full a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/4/state#state> ] ) .
+
+:arm5-at-1-0-0 a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_right ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/5/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/5/action#action> ] ) .
+
+:arm5-empty a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/5/state#state> ] ) .
+
+:arm5-free a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/5/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/5/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/5/action#action> ] ) .
+
+:arm5-free-to-drop a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/arm/5/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/belt/5/action#action> ] ) .
+
+:arm5-free-to-grip a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/5/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/5/state#state> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/arm/5/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/5/action#action> ] ) .
+
+:arm5-full a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/5/state#state> ] ) .
+
+:arm6-at-1-0-0 a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_right ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/6/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/6/action#action> ] ) .
+
+:arm6-empty a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/6/state#state> ] ) .
+
+:arm6-free a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/6/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/6/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/6/action#action> ] ) .
+
+:arm6-free-to-drop a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/arm/6/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/storage/3/action#action> ] ) .
+
+:arm6-free-to-grip a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/6/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/6/state#state> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/arm/6/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/6/action#action> ] ) .
+
+:arm6-full a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/6/state#state> ] ) .
+
+:arm7-at-1-0-0 a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_right ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/7/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/7/action#action> ] ) .
+
+:arm7-empty a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/7/state#state> ] ) .
+
+:arm7-free a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/7/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/7/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/7/action#action> ] ) .
+
+:arm7-free-to-grip a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/7/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/7/state#state> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/arm/7/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/7/action#action> ] ) .
+
+:arm7-full a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/7/state#state> ] ) .
+
+:arm8-at-1-0-0 a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_right ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/8/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/8/action#action> ] ) .
+
+:arm8-empty a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/8/state#state> ] ) .
+
+:arm8-free a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/8/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/8/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/8/action#action> ] ) .
+
+:arm8-free-to-drop a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/arm/8/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/storage/4/action#action> ] ) .
+
+:arm8-free-to-grip a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:down_left ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/8/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/8/state#state> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/arm/8/state#state> ] [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/arm/8/action#action> ] ) .
+
+:arm8-full a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasCapacity ;
+                sp:subject <http://localhost:8080/arm/8/state#state> ] ) .
+
+:belt0-free-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/belt/0/action#action> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/belt/0/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/0/state#state> ] ) .
+
+:belt0-notfree-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/0/state#state> ] ) .
+
+:belt1-free-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/belt/1/action#action> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/belt/1/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/1/state#state> ] ) .
+
+:belt1-notfree-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/1/state#state> ] ) .
+
+:belt2-free-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/belt/2/action#action> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/belt/2/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/2/state#state> ] ) .
+
+:belt2-notfree-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/2/state#state> ] ) .
+
+:belt3-free-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/belt/3/action#action> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/belt/3/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/3/state#state> ] ) .
+
+:belt3-notfree-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/3/state#state> ] ) .
+
+:belt4-free-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/belt/4/action#action> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/belt/4/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/4/state#state> ] ) .
+
+:belt4-notfree-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/4/state#state> ] ) .
+
+:belt5-free-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/belt/5/action#action> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/belt/5/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/5/state#state> ] ) .
+
+:belt5-notfree-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/5/state#state> ] ) .
+
+:belt6-free-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/belt/6/action#action> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/belt/6/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/6/state#state> ] ) .
+
+:belt6-notfree-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/6/state#state> ] ) .
+
+:belt7-free-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/belt/7/action#action> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/belt/7/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/7/state#state> ] ) .
+
+:belt7-notfree-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/7/state#state> ] ) .
+
+:belt8-free-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/belt/8/action#action> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/belt/8/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/8/state#state> ] ) .
+
+:belt8-notfree-to-transport a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/belt/8/state#state> ] ) .
+
+:machine0-free-to-process a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/machine/0/action#action> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/machine/0/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/machine/0/state#state> ] ) .
+
+:machine0-sensorout-full a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/machine/0/state#state> ] ) .
+
+:machine1-free-to-process a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/machine/1/action#action> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/machine/1/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/machine/1/state#state> ] ) .
+
+:machine1-sensorout-full a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/machine/1/state#state> ] ) .
+
+:machine2-free-to-process a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/machine/2/action#action> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/machine/2/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/machine/2/state#state> ] ) .
+
+:machine2-sensorout-full a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/machine/2/state#state> ] ) .
+
+:machine3-free-to-process a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:done ;
+                sp:predicate ukeaq:hasStatus ;
+                sp:subject <http://localhost:8080/machine/3/action#action> ] [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorInState ;
+                sp:subject <http://localhost:8080/machine/3/state#state> ] [ sp:object ukeaq:empty ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/machine/3/state#state> ] ) .
+
+:machine3-sensorout-full a sp:Ask ;
+    sp:where ( [ sp:object ukeaq:full ;
+                sp:predicate ukeaq:hasSensorOutState ;
+                sp:subject <http://localhost:8080/machine/3/state#state> ] ) .
+
+:arm7-free-to-drop a sp:Ask ;
+    sp:where ( _:ub1bL1843C3 _:ub1bL1847C3 ),
+        ( _:ub1bL1843C3 _:ub1bL1847C3 ) .
+
+_:ub1bL1843C3 sp:object ukeaq:empty ;
+    sp:predicate ukeaq:hasSensorOutState ;
+    sp:subject <http://localhost:8080/arm/7/state#state> .
+
+_:ub1bL1847C3 sp:object ukeaq:done ;
+    sp:predicate ukeaq:hasStatus ;
+    sp:subject <http://localhost:8080/belt/7/action#action> .

@@ -6,6 +6,9 @@
 @prefix http: <http://www.w3.org/2011/http#> .
 @prefix http_m: <http://www.w3.org/2011/http-methods#> .
 
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix sparql-result: <http://www.w3.org/2005/sparql-results#> .
+
 @prefix this: <http://this.nxparser.github.io/reference/to/URI/of/current/rdf/graph/for/representing/permanently/relative/URIs/in/N-Triples/#> .
 
 @prefix htn: <http://purl.org/uberq/htn/vocab#> .
@@ -36,25 +39,24 @@
 
     ?operator
         a htn:PlanningOperator ;
-        htn:hasPrimitiveTask ?operatorTask ;
-        htn:hasPostcondition ?operatorPc .
+        htn:hasPrimitiveTask ?operatorTask .
 
     ?operatorTask
-        htn:hasHttpRequest ?operatorRequest .
+        htn:hasHttpRequest ?operatorRequest ;
+        htn:hasPostcondition ?pc .
 
     ?operatorRequest
         http:mthd ?mthd ;
         http:requestURI ?uri ;
         http:body ?body .
-    
+
 } => {
     _:h
         http:mthd http_m:POST ;
         http:requestURI <http://tok450s.lan/ldbbc/> ;
         http:body {
             ?wfActivity
-                wild:hasHttpRequest ?operatorRequest ;
-                wild:hasPostcondition ?operatorPc .
+                wild:hasHttpRequest ?operatorRequest .
 
             ?operatorRequest
                 http:mthd ?mthd ;
@@ -84,17 +86,17 @@
 
     ?operator
         a htn:PlanningOperator ;
-        htn:hasPrimitiveTask ?operatorTask ;
-        htn:hasPostcondition ?operatorPc .
+        htn:hasPrimitiveTask ?operatorTask .
 
     ?operatorTask
-        htn:hasHttpRequest ?operatorRequest .
+        htn:hasHttpRequest ?operatorRequest ;
+        htn:hasPostcondition ?pc .
 
     ?operatorRequest
         http:mthd ?mthd ;
         http:requestURI ?uri ;
         http:body ?body .
-    
+
 } => {
     _:h
         http:mthd http_m:PUT ;
@@ -102,6 +104,7 @@
         http:body {
             ?wfActivity
                 a wild:AtomicActivity ;
+                wild:hasPostcondition ?pc ;
                 htn:forPlanningProblemInstance ?pi ;
                 htn:forTask ?task ;
                 htn:atDecompositionState htn:done .
