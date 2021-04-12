@@ -427,7 +427,7 @@
     a htn:PrimitiveTask ;
     htn:hasHttpRequest [
         http:mthd http_m:GET ;
-        http:body ""
+        http:body "wait"
     ] .
 
 :2arm0-drop-iron-ore-on-belt0_task a htn:PrimitiveTask ;
@@ -447,11 +447,11 @@
             http:mthd http_m:POST ] .
 
 :2arm0-wait2_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#2arm0-wait2_task" ;
             http:mthd http_m:GET ] .
 
 :2arm0-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#2arm0-wait_task" ;
             http:mthd http_m:GET ] .
 
 :2arm1-drop-iron-plate-on-belt1_task a htn:PrimitiveTask ;
@@ -471,11 +471,11 @@
             http:mthd http_m:POST ] .
 
 :2arm1-wait2_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#2arm1-wait2_task" ;
             http:mthd http_m:GET ] .
 
 :2arm1-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#2arm1-wait_task" ;
             http:mthd http_m:GET ] .
 
 :2belt0-on_task a htn:PrimitiveTask ;
@@ -483,7 +483,7 @@
             http:mthd http_m:POST ] .
 
 :2belt0-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#2belt0-wait_task" ;
             http:mthd http_m:GET ] .
 
 :2belt1-on_task a htn:PrimitiveTask ;
@@ -491,7 +491,7 @@
             http:mthd http_m:POST ] .
 
 :2belt1-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#2belt1-wait_task" ;
             http:mthd http_m:GET ] .
 
 :2machine0-on_task a htn:PrimitiveTask ;
@@ -499,7 +499,7 @@
             http:mthd http_m:POST ] .
 
 :2machine0-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#2machine0-wait_task" ;
             http:mthd http_m:GET ] .
 
 :arm0-drop-iron-ore-on-belt0_task a htn:PrimitiveTask ;
@@ -519,11 +519,11 @@
             http:mthd http_m:POST ] .
 
 :arm0-wait2_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#arm0-wait2_task" ;
             http:mthd http_m:GET ] .
 
 :arm0-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#arm0-wait_task" ;
             http:mthd http_m:GET ] .
 
 :arm1-drop-iron-plate-on-belt1_task a htn:PrimitiveTask ;
@@ -543,11 +543,11 @@
             http:mthd http_m:POST ] .
 
 :arm1-wait2_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#arm1-wait2_task" ;
             http:mthd http_m:GET ] .
 
 :arm1-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#arm1-wait_task" ;
             http:mthd http_m:GET ] .
 
 :arm2-drop-iron-plate-on-belt2_task a htn:PrimitiveTask ;
@@ -567,11 +567,11 @@
             http:mthd http_m:POST ] .
 
 :arm2-wait2_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#arm2-wait2_task" ;
             http:mthd http_m:GET ] .
 
 :arm2-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#arm2-wait_task" ;
             http:mthd http_m:GET ] .
 
 :arm3-drop-iron-plate-on-belt3_task a htn:PrimitiveTask ;
@@ -591,11 +591,11 @@
             http:mthd http_m:POST ] .
 
 :arm3-wait2_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#arm3-wait2_task" ;
             http:mthd http_m:GET ] .
 
 :arm3-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#arm3-wait_task" ;
             http:mthd http_m:GET ] .
 
 :arm4-drop-steel-plate-on-belt4_task a htn:PrimitiveTask ;
@@ -615,11 +615,11 @@
             http:mthd http_m:POST ] .
 
 :arm4-wait2_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#arm4-wait2_task" ;
             http:mthd http_m:GET ] .
 
 :arm4-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#arm4-wait_task" ;
             http:mthd http_m:GET ] .
 
 :arm5-drop-steel-plate-on-belt5_task a htn:PrimitiveTask ;
@@ -639,11 +639,11 @@
             http:mthd http_m:POST ] .
 
 :arm5-wait2_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#arm5-wait2_task" ;
             http:mthd http_m:GET ] .
 
 :arm5-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#arm5-wait_task" ;
             http:mthd http_m:GET ] .
 
 :arm6-drop-iron-gearwheel-on-belt6_task a htn:PrimitiveTask ;
@@ -663,11 +663,11 @@
             http:mthd http_m:POST ] .
 
 :arm6-wait2_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#arm6-wait2_task" ;
             http:mthd http_m:GET ] .
 
 :arm6-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#arm6-wait_task" ;
             http:mthd http_m:GET ] .
 
 :arm7-drop-iron-gearwheel-on-belt7_task a htn:PrimitiveTask ;
@@ -687,11 +687,11 @@
             http:mthd http_m:POST ] .
 
 :arm7-wait2_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#arm7-wait2_task" ;
             http:mthd http_m:GET ] .
 
 :arm7-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#arm7-wait_task" ;
             http:mthd http_m:GET ] .
 
 :arm8-drop-flamethrower-on-belt8_task a htn:PrimitiveTask ;
@@ -711,11 +711,11 @@
             http:mthd http_m:POST ] .
 
 :arm8-wait2_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#arm8-wait2_task" ;
             http:mthd http_m:GET ] .
 
 :arm8-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#arm8-wait_task" ;
             http:mthd http_m:GET ] .
 
 :belt0-on_task a htn:PrimitiveTask ;
@@ -723,7 +723,7 @@
             http:mthd http_m:POST ] .
 
 :belt0-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#belt0-wait_task" ;
             http:mthd http_m:GET ] .
 
 :belt1-on_task a htn:PrimitiveTask ;
@@ -731,7 +731,7 @@
             http:mthd http_m:POST ] .
 
 :belt1-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#belt1-wait_task" ;
             http:mthd http_m:GET ] .
 
 :belt2-on_task a htn:PrimitiveTask ;
@@ -739,7 +739,7 @@
             http:mthd http_m:POST ] .
 
 :belt2-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#belt2-wait_task" ;
             http:mthd http_m:GET ] .
 
 :belt3-on_task a htn:PrimitiveTask ;
@@ -747,7 +747,7 @@
             http:mthd http_m:POST ] .
 
 :belt3-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#belt3-wait_task" ;
             http:mthd http_m:GET ] .
 
 :belt4-on_task a htn:PrimitiveTask ;
@@ -755,7 +755,7 @@
             http:mthd http_m:POST ] .
 
 :belt4-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#belt4-wait_task" ;
             http:mthd http_m:GET ] .
 
 :belt5-on_task a htn:PrimitiveTask ;
@@ -763,7 +763,7 @@
             http:mthd http_m:POST ] .
 
 :belt5-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#belt5-wait_task" ;
             http:mthd http_m:GET ] .
 
 :belt6-on_task a htn:PrimitiveTask ;
@@ -771,7 +771,7 @@
             http:mthd http_m:POST ] .
 
 :belt6-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#belt6-wait_task" ;
             http:mthd http_m:GET ] .
 
 :belt7-on_task a htn:PrimitiveTask ;
@@ -779,7 +779,7 @@
             http:mthd http_m:POST ] .
 
 :belt7-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#belt7-wait_task" ;
             http:mthd http_m:GET ] .
 
 :belt8-on_task a htn:PrimitiveTask ;
@@ -787,7 +787,7 @@
             http:mthd http_m:POST ] .
 
 :belt8-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#belt8-wait_task" ;
             http:mthd http_m:GET ] .
 
 :machine0-on_task a htn:PrimitiveTask ;
@@ -795,7 +795,7 @@
             http:mthd http_m:POST ] .
 
 :machine0-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#machine0-wait_task" ;
             http:mthd http_m:GET ] .
 
 :machine1-on_task a htn:PrimitiveTask ;
@@ -803,7 +803,7 @@
             http:mthd http_m:POST ] .
 
 :machine1-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#machine1-wait_task" ;
             http:mthd http_m:GET ] .
 
 :machine2-on_task a htn:PrimitiveTask ;
@@ -811,7 +811,7 @@
             http:mthd http_m:POST ] .
 
 :machine2-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#machine2-wait_task" ;
             http:mthd http_m:GET ] .
 
 :machine3-on_task a htn:PrimitiveTask ;
@@ -819,7 +819,7 @@
             http:mthd http_m:POST ] .
 
 :machine3-wait_task a htn:PrimitiveTask ;
-    htn:hasHttpRequest [ http:body "" ;
+    htn:hasHttpRequest [ http:body "file:///home/nico/Workspaces/htn-wild/.dev/_flamethrower-workflow.ttl#machine3-wait_task" ;
             http:mthd http_m:GET ] .
 
 

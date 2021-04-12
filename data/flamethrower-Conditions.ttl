@@ -10,6 +10,7 @@
 @prefix sparql-result: <http://www.w3.org/2005/sparql-results#> .
 
 @prefix htn: <http://purl.org/uberq/htn/vocab#> .
+@prefix ukeaq: <http://www.student.kit.edu/~ukeaq/uni/voc.ttl#> .
 
 @prefix : <#> .
 
@@ -728,8 +729,7 @@
                 sp:subject <http://localhost:8080/machine/3/state#state> ] ) .
 
 :arm7-free-to-drop a sp:Ask ;
-    sp:where ( _:ub1bL1843C3 _:ub1bL1847C3 ),
-        ( _:ub1bL1843C3 _:ub1bL1847C3 ) .
+    sp:where ( _:ub1bL1843C3 _:ub1bL1847C3 ) .
 
 _:ub1bL1843C3 sp:object ukeaq:empty ;
     sp:predicate ukeaq:hasSensorOutState ;
