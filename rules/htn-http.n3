@@ -18,54 +18,7 @@
 
 
 # HTN-7
-# > Create the request
-{
-    ?pi
-        a htn:PlanningProblemInstance ;
-        htn:atDecompositionState htn:decomposing .
-
-    ?wfActivity
-        a wild:AtomicActivity ;
-        htn:forPlanningProblemInstance ?pi ;
-        htn:forTask ?task ;
-        htn:atDecompositionState htn:created .
-
-    ?task
-        htn:hasHttpRequest ?request .
-
-    ?request
-        http:mthd ?mthd ;
-        http:body ?body .
-
-    ?operator
-        a htn:PlanningOperator ;
-        htn:hasPrimitiveTask ?operatorTask .
-
-    ?operatorTask
-        htn:hasHttpRequest ?operatorRequest ;
-        htn:hasPostcondition ?pc .
-
-    ?operatorRequest
-        http:mthd ?mthd ;
-        http:requestURI ?uri ;
-        http:body ?body .
-
-} => {
-    _:h
-        http:mthd http_m:POST ;
-        http:requestURI <http://tok450s.lan/ldbbc/> ;
-        http:body {
-            ?wfActivity
-                wild:hasHttpRequest ?operatorRequest .
-
-            ?operatorRequest
-                http:mthd ?mthd ;
-                http:requestURI ?uri ;
-                http:body ?body .
-        } .
-} .
-# HTN-7
-# > Set status to done
+# > Create the request and set status to done
 {
     ?pi
         a htn:PlanningProblemInstance ;
@@ -107,6 +60,12 @@
                 wild:hasPostcondition ?pc ;
                 htn:forPlanningProblemInstance ?pi ;
                 htn:forTask ?task ;
-                htn:atDecompositionState htn:done .
+                htn:atDecompositionState htn:done ;
+                wild:hasHttpRequest ?operatorRequest .
+
+            ?operatorRequest
+                http:mthd ?mthd ;
+                http:requestURI ?uri ;
+                http:body ?body .
         } .
 } .
