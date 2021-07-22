@@ -3,11 +3,11 @@
 This is the example implementation for our demo submission for ATAC21.
 
 ## Components
-### Ontology
+### Ontologies
 
 In this directory the vocabulary along with the operational semantics is stored as Turtle and N3 files. Every file name that belongs to the HTN Ontology starts with htn* . The vocab and the rules are commented with explanations. Other files include the list vocab taken from the WiLD setup and some implementation-specific rules for data retrieval.
 
-### Description
+### Data
 
 In this directory you can store your planning problem descriptions. For reference, an example description for building a flamethrower is included. To test it, first set up the environment as described below, then run the following scripts:
 
