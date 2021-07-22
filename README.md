@@ -1,6 +1,6 @@
-# HTN4WiLD
+# Planning and Executing a Manufacturing Workflow in a Virtual Manufacturing Environment with Linked Data Interfaces
 
-This is the example implementation for our paper "Integrated Planning and Execution on Read-Write Linked Data".
+This is the example implementation for our demo submission for ATAC21.
 
 ## Components
 ### Ontology
@@ -9,17 +9,15 @@ In this directory the vocabulary along with the operational semantics is stored 
 
 ### Description
 
-In this directory you can store your planning problem descriptions. For reference, an example description for building a stool is included. To test it, decide for one goal by changing the symlink of `data/stool-Problem.ttl` to the `RED` or `GREEN` Problem. Then run the following scripts:
+In this directory you can store your planning problem descriptions. For reference, an example description for building a flamethrower is included. To test it, first set up the environment as described below, then run the following scripts:
 
 1. `init-servers.sh` to upload vocab, problem description and instances to LDBBC
-2. `runIt.sh [-n 100]` to start the decomposition
-3. `runWild.sh [-n 100]` to start the generated workflows
+2. `runIt.sh -n` to start the decomposition
+3. `runWild.sh -n` to start the generated workflows
 
-Do not forget to setup your environment (copy `.env` to `.env.local`):
+How to setup your environment
 
-* [LDBBC](https://github.com/kaefer3000/ldbbc) needs to run and be accessible via `http://tok450s.lan/ldbbc/` &rightarrow; see `servers/ldbbc-lists`
-* [Linked Data-Fu](https://linked-data-fu.github.io/) needs to be installed and executable
-
-### Example UI
-
-Along with the stool example comes a very basic UI to simulate an IoT device performing actions of an robotic arm. Run it with `npm start` in `servers/stool` as `http://localhost:3000/`. Then open the HTML file in the `web/` directory with a web browser.
+* Move `.env` to `.env.local` and adapt the paths/urls
+* Start [LDBBC](https://github.com/kaefer3000/ldbbc) and the virtual factory by using the `start-servers.sh` and `stop-servers.sh` scripts.
+* Setup your `/etc/hosts` so that *tok450s.lan* points to your local IP
+* Download [Linked Data-Fu](https://linked-data-fu.github.io/) and adapt the executable path in `.env.local`
