@@ -3,9 +3,9 @@
 This is the example implementation for our demo submission for ATAC21.
 
 ## Components
-### Ontologies
+### Ontologies/Rules
 
-In this directory the vocabulary along with the operational semantics is stored as Turtle and N3 files. Every file name that belongs to the HTN Ontology starts with htn* . The vocab and the rules are commented with explanations. Other files include the list vocab taken from the WiLD setup and some implementation-specific rules for data retrieval.
+In these directories the vocabulary along with the operational semantics is stored as Turtle and N3 files. Every file name that belongs to the HTN Ontology starts with htn* . The vocab and the rules are commented with explanations. Other files include the list vocab taken from the WiLD setup and some implementation-specific rules for data retrieval.
 
 ### Data
 
