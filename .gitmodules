@@ -4,4 +4,4 @@
 	branch = lists
 [submodule "wild-demo"]
 	path = wild-demo
-	url = git@git.scc.kit.edu:co1683/wild-demo.git
+	url = https://git.scc.kit.edu/co1683/wild-demo.git
